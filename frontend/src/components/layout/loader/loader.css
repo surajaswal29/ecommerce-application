@@ -1,0 +1,23 @@
+.loader-wrap {
+  height: 100vh;
+  width: 100vw;
+  background-color: #ffffff;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  display: grid;
+  place-items: center;
+}
+.loader-wrap .loader {
+  width: 8vmax;
+  height: 8vmax;
+  border-bottom: 2px solid rgb(0, 0, 0);
+  /* border-top: 4px solid rgb(219, 182, 16); */
+  border-radius: 50%;
+  animation: loading 500ms linear infinite;
+}
+@keyframes loading {
+  to {
+    transform: rotateZ(-360deg);
+  }
+}

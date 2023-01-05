@@ -1,0 +1,14 @@
+.bg-product .product-heading {
+  font-size: 22px;
+  font-weight: bold;
+  background-color: #fff;
+  padding: 10px 5px;
+  text-align: center;
+}
+.bg-product {
+  padding: 40px;
+}
+.bg-product .product-flex-board {
+  display: flex;
+  flex-flow: wrap;
+}

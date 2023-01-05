@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;500&display=swap");
+@import url(//db.onlinewebfonts.com/c/157c6cc36dd65b1b2adc9e7f3329c761?family=Amazon+Ember);
+:root {
+  --main-web-color: #000;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Work Sans", sans-serif;
+}
+*::selection {
+  background-color: transparent;
+}
+.pr-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pr-center-even {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.flex-gap {
+  gap: 2.5vmax;
+  padding: 2rem !important;
+}
+.video-style {
+  width: 250px;
+  height: 250px;
+}
+.not-exist-video {
+  width: 100%;
+}
+.not-exist-msg {
+  width: inherit;
+  margin: auto;
+}
+.not-exist-msg span:first-of-type {
+  font-size: 2rem;
+  font-weight: 400;
+}
+.not-exist-msg span:last-of-type {
+  color: #7a7575;
+}
+.MuiSlider-root {
+  color: #497285 !important;
+}
+.MuiSlider-root:hover {
+  color: #68b984;
+}
+.MuiSlider-thumb {
+  width: 18px !important;
+  height: 18px !important;
+}

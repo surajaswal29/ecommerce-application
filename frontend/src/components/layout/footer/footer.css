@@ -1,0 +1,51 @@
+.main-footer {
+  background-color: var(--main-web-color);
+  width: 100%;
+  margin-top: 10vmax;
+}
+.main-footer .bb-logo {
+  width: 150px;
+}
+.main-footer strong {
+  font-weight: 500;
+}
+.copy-right-footer {
+  width: 100%;
+  background-color: #131a22;
+  font-size: 12px;
+  text-align: center;
+  padding: 5px 10px;
+}
+.nav-footer {
+  display: flex;
+  flex-direction: column;
+}
+.nav-footer a {
+  color: #fff;
+  text-decoration: none;
+  margin: 4px 0px;
+  font-size: 14px;
+  font-weight: 300;
+}
+.nav-footer a:hover {
+  color: #fff;
+}
+.app-store img {
+  border-radius: 10px;
+  margin: 5px 0px;
+}
+.social-box {
+  padding-left: 6rem !important;
+}
+.app-store-box {
+  display: flex;
+  flex-flow: column;
+}
+@media (max-width: 400px) {
+  .main-footer * {
+    justify-content: center;
+  }
+  .main-footer .p-5 {
+    padding: 1rem !important;
+  }
+}
