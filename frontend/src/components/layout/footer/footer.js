@@ -23,13 +23,13 @@ const Footer = () => {
           />
           <span className="text-light mt-2">Fashion Does Matter.</span>
         </div>
-        <div className="col-md-3">
+        <div className="col-md-3 px-md-5">
           <strong className="text-light">Categories</strong>
           <div className="nav-footer">
             <Category />
           </div>
         </div>
-        <div className="col-md-2">
+        <div className="col-md-2 px-md-3">
           <strong className="text-light">Links</strong>
           <div className="nav-footer">
             <a href="https://www.facebook.com/">About</a>
@@ -37,7 +37,7 @@ const Footer = () => {
             <a href="https://www.facebook.com/">Privacy Policy</a>
           </div>
         </div>
-        <div className="col-md-2">
+        <div className="col-md-2 px-md-3">
           <strong className="text-light">Connect with Us</strong>
           <div className="nav-footer">
             <a href="https://www.facebook.com/">Facebook</a>
@@ -45,7 +45,7 @@ const Footer = () => {
             <a href="https://www.facebook.com/">Instagram</a>
           </div>
         </div>
-        <div className="col-md-3 app-store social-box">
+        <div className="col-md-3 app-store social-box pr-md-2">
           <strong className="text-light">Download our Mobile App</strong>
           <div className="app-store-box">
             <a href="https://play.google.com/store/games?hl=en&gl=US&pli=1">
