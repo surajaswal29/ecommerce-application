@@ -49,7 +49,7 @@
 }
 .info-bar a,
 .address-box a,
-.address-box .cat-click {
+.cat-click {
   color: #fff;
   text-decoration: none;
   font-size: 14px;
@@ -59,10 +59,11 @@
 }
 .info-bar a:hover,
 .address-box a:hover,
-.address-box .cat-click:hover {
+.cat-click:hover {
   color: #68b984;
   border-bottom: 1px solid #68b984;
   transition: all ease-in-out 300ms;
+  cursor: pointer;
 }
 .address-box {
   cursor: pointer;
@@ -79,9 +80,11 @@
   height: 1.2em;
   width: 1.2em;
 }
-.address-box .cat-click {
+.cat-click {
   position: relative;
-  margin: 0px 3px;
+}
+.user-name-color {
+  color: #68b984 !important;
 }
 .cat-dropdown {
   display: flex;

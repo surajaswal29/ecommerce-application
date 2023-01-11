@@ -11,7 +11,7 @@ exports.registerUser = catchAsyncError(async (req, res, next) => {
   const myCloudinary = await cloudinary.v2.uploader.upload(req.body.avatar, {
     folder: "avatars",
     crop: "scale",
-    width: 150,
+    width: 200,
   });
 
   const { email, password } = req.body;
@@ -171,20 +171,35 @@ exports.updatePassword = catchAsyncError(async (req, res, next) => {
 
 // Update Profile
 exports.updateProfile = catchAsyncError(async (req, res, next) => {
-  const newUserData = {
-    name: req.body.name,
-    email: req.body.email,
+  const updateName = req.body.updateName;
+  const updateEmail = req.body.updateEmail;
+
+  const updateCloudinary = await cloudinary.v2.uploader.upload(
+    req.body.avatar,
+    {
+      folder: "avatars",
+      crop: "scale",
+      width: 200,
+    }
+  );
+
+  const updateUserData = {
+    name: updateName,
+    email: updateEmail,
+    avatar: {
+      public_id: updateCloudinary.public_id,
+      url: updateCloudinary.secure_url,
+    },
   };
 
-  // Cloudinary will be updated later------------------------------------------------------->>>>>>
-
-  const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
+  const user = await User.findByIdAndUpdate(req.user.id, updateUserData, {
     new: true,
     runValidators: true,
     useFindAndModify: false,
   });
 
   res.status(200).json({
+    user,
     success: true,
     message: "Profile Updated",
   });

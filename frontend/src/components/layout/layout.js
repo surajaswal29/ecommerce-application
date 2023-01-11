@@ -4,6 +4,7 @@ import Footer from "./footer/footer";
 import Header from "./header/header";
 
 const Layout = () => {
+  // console.log(props);
   return (
     <>
       <Header />

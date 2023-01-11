@@ -1,7 +1,11 @@
-import React from "react";
-import "./app.css";
+import React, { useEffect } from "react";
 
+// React Router
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+// Redux imports
+import { useDispatch, useSelector } from "react-redux";
+import { loadUser } from "./actions/userAction";
 
 // components imports
 import Home from "./components/layout/Home/Home";
@@ -13,11 +17,19 @@ import Signup from "./components/layout/user/signup";
 import Layout from "./components/layout/layout";
 import Account from "./components/layout/user/account";
 
-// import bootstrap file
+// import bootstrap and css file
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./app.css";
 
 // creating App component
 const App = () => {
+  const dispatch = useDispatch();
+  const { user, isAuthenticated } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    dispatch(loadUser());
+  }, [dispatch]);
+
   return (
     <Router>
       <Routes>
@@ -28,10 +40,16 @@ const App = () => {
           <Route path="/products/:keyword" element={<Product />} />
           <Route path="/products/category/:category" element={<Product />} />
           <Route exact path="/mycart/" element={<MyCart />} />
+          <Route
+            exact
+            path="/user/account/"
+            element={
+              <Account userData={user} isAuthenticated={isAuthenticated} />
+            }
+          />
         </Route>
         <Route exact path="/user/login/" element={<Login />} />
         <Route exact path="/user/signup/" element={<Signup />} />
-        <Route exact path="/user/account" element={<Account />} />
       </Routes>
     </Router>
   );

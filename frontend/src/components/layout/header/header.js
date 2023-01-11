@@ -1,17 +1,53 @@
-import React, { useState } from "react";
-import "./header.css";
+import React, { useState, useEffect } from "react";
+
+// import search and category component
 import Search from "./search";
 import Category from "./category";
+
+// main website logo
 import BBlogo from "../../images/bb-logo-1.svg";
-import { Link } from "react-router-dom";
+
+// React Router DOM
+import { Link, useNavigate } from "react-router-dom";
+
+// Redux Imports
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../../actions/userAction";
+
+// React Icons
+import { CiLogout } from "react-icons/ci";
+import { CgProfile } from "react-icons/cg";
 import { MdShoppingCart, MdKeyboardArrowDown, MdMenu } from "react-icons/md";
 
+// main header css file
+import "./header.css";
+
+// Header Component
 const Header = () => {
+  // category dropdown
   const [clickStatus, setDropClick] = useState(0);
+  // user-profile dropdown
+  const [userProfile, setUserProfile] = useState(0);
+
+  const dispatch = useDispatch(); //for logout
+  const navigate = useNavigate();
+  const { user, isAuthenticated } = useSelector((state) => state.user);
+
+  // user logout click handler
+  const userLogout = () => {
+    dispatch(logout());
+  };
+
+  // useEffect(() => {
+  //   if (isAuthenticated === false) {
+  //     navigate("/");
+  //   }
+  // }, [navigate, isAuthenticated]);
 
   return (
     <div className="container-fluid ecom-header">
       <div className="row">
+        {/* logo, category */}
         <div className="col-md-4 main-logo d-flex align-items-center py-0">
           <div className="logo">
             <Link to="/">
@@ -41,12 +77,36 @@ const Header = () => {
             <MdMenu />
           </div>
         </div>
-
+        {/* search bar */}
         <div className="col-md-5 search-bar pr-center">
           <Search />
         </div>
+        {/* logout, login, cart  */}
         <div className="col-md-3 info-bar pr-center">
-          <Link to={"/user/login"}>Hello, Sign in</Link>
+          {isAuthenticated ? (
+            <div
+              className="cat-click"
+              onClick={() => {
+                userProfile === 1
+                  ? setUserProfile(0)
+                  : setUserProfile(userProfile + 1);
+              }}
+            >
+              Hello, <span className="user-name-color">{user.name}</span>{" "}
+              <MdKeyboardArrowDown />
+              <div className={userProfile === 1 ? "cat-dropdown" : "hide"}>
+                <Link to="/user/account">
+                  <CgProfile /> Your profile
+                </Link>
+                <Link onClick={userLogout}>
+                  <CiLogout /> Log out
+                </Link>
+              </div>
+            </div>
+          ) : (
+            <Link to={"/user/login"}>Hello, Sign in</Link>
+          )}
+
           <Link to={"/order"}>My order</Link>
           <Link to={"/mycart"} className="pr-center">
             <MdShoppingCart />
