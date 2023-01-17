@@ -28,7 +28,7 @@ const Login = () => {
   };
 
   const redirect = location.search
-    ? location.search.split("=")[1]
+    ? `/${location.search.split("=")[1]}`
     : "/user/account";
 
   useEffect(() => {

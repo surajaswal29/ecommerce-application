@@ -68,7 +68,7 @@ const Signup = () => {
       console.log(error);
     }
     if (isAuthenticated) {
-      navigate("/account");
+      navigate("/user/account");
     }
   }, [navigate, loading, isAuthenticated]);
 

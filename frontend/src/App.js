@@ -17,6 +17,7 @@ import Signup from "./components/layout/user/signup";
 import Layout from "./components/layout/layout";
 import Account from "./components/layout/user/Account.js";
 import ProtectedRoute from "./components/Route/ProtectedRoute.js";
+import Shipping from "./components/layout/cart/Shipping.js";
 
 // import bootstrap and css file
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -45,6 +46,7 @@ const App = () => {
         </Route>
         <Route exact path="/" element={<ProtectedRoute />}>
           <Route exact path="/user/account" element={<Account />} />
+          <Route exact path="/shipping" element={<Shipping />} />
         </Route>
         <Route exact path="/user/login/" element={<Login />} />
         <Route exact path="/user/signup/" element={<Signup />} />
