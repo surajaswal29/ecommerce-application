@@ -15,19 +15,16 @@ import { MdKeyboardArrowLeft } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
 import { getProductDetails } from "../../../actions/productAction";
+import { addItemsToCart } from "../../../actions/cartAction";
 
 const ProductDetails = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const { product, loading } = useSelector((state) => state.productDetails);
 
-  useEffect(() => {
-    dispatch(getProductDetails(id));
-  }, [dispatch, id]);
-
   // quantity state
   const [quantity, onQuantityClick] = useState(1);
-
+  console.log(quantity);
   const options = {
     edit: false,
     color: "rgba(20,20,20,0.1)",
@@ -35,6 +32,16 @@ const ProductDetails = () => {
     size: window.innerWidth < 600 ? 20 : 25,
     isHalf: true,
   };
+
+  // handling add to cart event
+  const addToCartHandler = () => {
+    dispatch(addItemsToCart(id, quantity));
+    alert("Item Added to Cart");
+  };
+
+  useEffect(() => {
+    dispatch(getProductDetails(id));
+  }, [dispatch, id]);
 
   return (
     <>
@@ -92,7 +99,13 @@ const ProductDetails = () => {
                   <ReactStar {...options} value={product.ratings} /> &nbsp;
                   &nbsp; <span>({product.numOfReviews} reviews)</span>
                 </div>
-                <h2>₹{product.price}</h2>
+                <h2>
+                  {product.price &&
+                    product.price.toLocaleString("en-IN", {
+                      style: "currency",
+                      currency: "INR",
+                    })}
+                </h2>
                 <div className="quantity-wrapper">
                   <label htmlFor="quantity">Quantity</label>
                   <div className="quantity-box">
@@ -106,6 +119,7 @@ const ProductDetails = () => {
                     <input
                       type="number"
                       id="quantity"
+                      readOnly
                       value={quantity}
                       onChange={(e) => onQuantityClick(e.target.value)}
                     />
@@ -123,7 +137,9 @@ const ProductDetails = () => {
                 </div>
                 <div className="row mt-4">
                   <div className="col-md-6">
-                    <div className="cart-button">ADD TO CART</div>
+                    <div className="cart-button" onClick={addToCartHandler}>
+                      ADD TO CART
+                    </div>
                   </div>
                   <div className="col-md-6">
                     <div className="check-button"> Checkout</div>

@@ -171,35 +171,46 @@ exports.updatePassword = catchAsyncError(async (req, res, next) => {
 
 // Update Profile
 exports.updateProfile = catchAsyncError(async (req, res, next) => {
-  const updateName = req.body.updateName;
-  const updateEmail = req.body.updateEmail;
-
-  const updateCloudinary = await cloudinary.v2.uploader.upload(
-    req.body.avatar,
-    {
-      folder: "avatars",
-      crop: "scale",
-      width: 200,
-    }
-  );
-
   const updateUserData = {
-    name: updateName,
-    email: updateEmail,
-    avatar: {
-      public_id: updateCloudinary.public_id,
-      url: updateCloudinary.secure_url,
-    },
+    name: req.body.updateName,
+    email: req.body.updateEmail,
   };
 
-  const user = await User.findByIdAndUpdate(req.user.id, updateUserData, {
+  console.log(updateUserData);
+  if (req.body.updateAvatar !== "") {
+    const user = await User.findById(req.user.id);
+
+    const imageId = user.avatar.public_id;
+
+    await cloudinary.v2.uploader.destroy(imageId);
+
+    const updateCloudinary = await cloudinary.v2.uploader.upload(
+      req.body.updateAvatar,
+      {
+        folder: "avatars",
+        crop: "scale",
+        width: 200,
+      }
+    );
+
+    updateUserData.avatar = {
+      public_id: updateCloudinary.public_id,
+      url: updateCloudinary.secure_url,
+    };
+  }
+  console.log(req.body.id);
+
+  const user = await User.findByIdAndUpdate(req.user._id, updateUserData, {
     new: true,
     runValidators: true,
     useFindAndModify: false,
   });
 
+  if (!user) {
+    return next(new ErrorHandler("cannot update user", 400));
+  }
+
   res.status(200).json({
-    user,
     success: true,
     message: "Profile Updated",
   });

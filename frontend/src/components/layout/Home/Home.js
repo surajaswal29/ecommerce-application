@@ -5,7 +5,7 @@ import Loader from "../loader/loader";
 
 // importing swiper
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper";
+// import { Autoplay } from "swiper";
 import "swiper/swiper.min.css";
 
 import MetaData from "../metaData.js";

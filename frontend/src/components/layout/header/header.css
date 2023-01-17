@@ -124,14 +124,20 @@
   display: none;
 }
 
-@media (max-width: 400px) {
-  .search-bar,
+@media (max-width: 576px) {
   .info-bar,
   .address-box {
-    display: none;
+    display: none !important;
+  }
+  .search-bar .input-search {
+    margin-top: 1rem;
+    width: 100%;
+  }
+  .search-bar input {
+    width: 100%;
   }
   .ecom-header {
-    padding: 6px 0px;
+    padding: 12px 0px;
   }
   .main-logo {
     justify-content: space-between;

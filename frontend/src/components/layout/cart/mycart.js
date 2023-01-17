@@ -1,10 +1,35 @@
 import React from "react";
 
+import { Link, useNavigate } from "react-router-dom";
+
 // css file
 import "./cart.css";
-import { MdKeyboardArrowLeft, MdDelete } from "react-icons/md";
+import { MdKeyboardArrowLeft } from "react-icons/md";
+
+import { useDispatch, useSelector } from "react-redux";
+import CartItemCard from "./CartItemCard";
+import { removeItemsFromCart } from "../../../actions/cartAction.js";
 
 const MyCart = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { cartItems } = useSelector((state) => state.cart);
+
+  let subTotal = 0;
+
+  const tax = 200;
+  // const totalPrice = subTotal + tax;
+
+  cartItems.map((i) => (subTotal += i.price * i.quantity));
+
+  const deleteCartItems = (id) => {
+    dispatch(removeItemsFromCart(id));
+  };
+
+  const checkOutHandler = () => {
+    navigate("/user/login?redirect=shipping");
+  };
   return (
     <div className="container">
       <div className="row mt-3">
@@ -25,66 +50,22 @@ const MyCart = () => {
       </div>
       <div className="row mt-2">
         <div className="col-md-8">
-          <div className="item-wrapper d-flex">
-            <div className="item-img">
-              <img
-                src="https://m.media-amazon.com/images/W/WEBP_402378-T1/images/I/41OXtSIsFXL.jpg"
-                alt="product"
+          {cartItems && cartItems.length > 0 ? (
+            cartItems.map((item) => (
+              <CartItemCard
+                item={item}
+                key={item.product}
+                deleteCartItem={deleteCartItems}
               />
+            ))
+          ) : (
+            <div className="item-wrapper text-center">
+              <p className="text-center">Cart is empty</p>
+              <Link to={"/products"} className="btn btn-success">
+                Start shopping
+              </Link>
             </div>
-            <div className="item-name">
-              <span>Men's Winter Wear Full Sleeves Denim Jacket</span>
-              <br />
-              <span>Product ID #63a610ad7b3a12cf32c575ab</span>
-            </div>
-            <div className="item-quantity-price d-flex justify-content-between">
-              <span>Quantity: 2</span>
-              <span>
-                <strong>₹1200</strong>
-              </span>
-            </div>
-            <MdDelete />
-          </div>
-          <div className="item-wrapper d-flex">
-            <div className="item-img">
-              <img
-                src="https://m.media-amazon.com/images/W/WEBP_402378-T1/images/I/61KNBTw4K8S._UX679_.jpg"
-                alt="product"
-              />
-            </div>
-            <div className="item-name">
-              <span>Men's Full Sleeves Formal Shirt</span>
-              <br />
-              <span>Product ID #63a610ad7b3a12cf32c575ab</span>
-            </div>
-            <div className="item-quantity-price d-flex justify-content-between">
-              <span>Quantity: 1</span>
-              <span>
-                <strong>₹700</strong>
-              </span>
-            </div>
-            <MdDelete />
-          </div>
-          <div className="item-wrapper d-flex">
-            <div className="item-img">
-              <img
-                src="https://m.media-amazon.com/images/W/WEBP_402378-T1/images/I/61ahn9N38zL._SX679_.jpg"
-                alt="product"
-              />
-            </div>
-            <div className="item-name">
-              <span>OnePlus Nord 2T</span>
-              <br />
-              <span>Product ID #63a6c850c79d384eb2d1f07c</span>
-            </div>
-            <div className="item-quantity-price d-flex justify-content-between">
-              <span>Quantity: 1</span>
-              <span>
-                <strong>₹28999</strong>
-              </span>
-            </div>
-            <MdDelete />
-          </div>
+          )}
         </div>
         <div className="col-md-4">
           <div className="cart-total">
@@ -98,21 +79,36 @@ const MyCart = () => {
                   </tr>
                   <tr>
                     <td>Tax/GST</td>
-                    <td>₹200</td>
+                    <td>₹{tax}</td>
                   </tr>
                   <tr>
                     <td>Subtotal</td>
-                    <td>₹1947</td>
+                    <td>
+                      {subTotal.toLocaleString("en-IN", {
+                        style: "currency",
+                        currency: "INR",
+                      })}
+                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <div className="full-total pr-center-even">
               <span>Total</span>
-              <span>₹2147</span>
+              <span>
+                {subTotal !== 0
+                  ? subTotal.toLocaleString("en-IN", {
+                      style: "currency",
+                      currency: "INR",
+                    })
+                  : subTotal}
+              </span>
             </div>
           </div>
-          <div className="check-button bg-dark"> Proceed to Checkout</div>
+
+          <div className="check-button bg-dark" onClick={checkOutHandler}>
+            Proceed to Checkout
+          </div>
         </div>
       </div>
     </div>

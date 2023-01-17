@@ -36,7 +36,12 @@ const ProductCard = ({ product }) => {
             <ReactStar {...options} />{" "}
             <span>({product.numOfReviews}) reviews</span>
           </div>
-          <span>₹{product.price}</span>
+          <span>
+            {product.price.toLocaleString("en-IN", {
+              style: "currency",
+              currency: "INR",
+            })}
+          </span>
         </div>
       </Link>
     </div>

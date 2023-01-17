@@ -8,9 +8,6 @@ import {
   LOAD_USER_REQUEST,
   LOAD_USER_SUCCESS,
   LOAD_USER_FAIL,
-  UPDATE_USER_REQUEST,
-  UPDATE_USER_SUCCESS,
-  UPDATE_USER_FAIL,
   LOGOUT_USER_FAIL,
   LOGOUT_USER_SUCCESS,
   CLEAR_ERRORS,
@@ -22,7 +19,6 @@ export const userReducer = (state = { user: {} }, action) => {
     case LOGIN_REQUEST:
     case REGISTER_USER_REQUEST:
     case LOAD_USER_REQUEST:
-    case UPDATE_USER_REQUEST:
       return {
         loading: true,
         isAuthenticated: false,
@@ -30,7 +26,6 @@ export const userReducer = (state = { user: {} }, action) => {
     case LOGIN_SUCCESS:
     case REGISTER_USER_SUCCESS:
     case LOAD_USER_SUCCESS:
-    case UPDATE_USER_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -45,7 +40,6 @@ export const userReducer = (state = { user: {} }, action) => {
       };
     case LOGIN_FAIL:
     case REGISTER_USER_FAIL:
-    case UPDATE_USER_FAIL:
       return {
         ...state,
         loading: false,

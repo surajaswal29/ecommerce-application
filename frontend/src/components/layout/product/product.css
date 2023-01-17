@@ -222,7 +222,7 @@ input[type="number"] {
   box-sizing: border-box;
   margin-top: 10px;
 }
-@media (max-width: 400px) {
+@media (max-width: 576px) {
   .flex-gap {
     grid-gap: 1vmax;
     gap: 1vmax;
@@ -236,5 +236,8 @@ input[type="number"] {
   }
   .main-banner {
     height: auto !important;
+  }
+  .bg-product {
+    padding: 20px;
   }
 }

@@ -17,7 +17,12 @@ import { logout } from "../../../actions/userAction";
 // React Icons
 import { CiLogout } from "react-icons/ci";
 import { CgProfile } from "react-icons/cg";
-import { MdShoppingCart, MdKeyboardArrowDown, MdMenu } from "react-icons/md";
+import {
+  MdShoppingCart,
+  MdKeyboardArrowDown,
+  MdMenu,
+  MdDashboardCustomize,
+} from "react-icons/md";
 
 // main header css file
 import "./header.css";
@@ -28,9 +33,11 @@ const Header = () => {
   const [clickStatus, setDropClick] = useState(0);
   // user-profile dropdown
   const [userProfile, setUserProfile] = useState(0);
+  const navigate = useNavigate();
+  const cartItems = JSON.parse(localStorage.getItem("cartItems"));
 
   const dispatch = useDispatch(); //for logout
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { user, isAuthenticated } = useSelector((state) => state.user);
 
   // user logout click handler
@@ -38,12 +45,11 @@ const Header = () => {
     dispatch(logout());
   };
 
-  // useEffect(() => {
-  //   if (isAuthenticated === false) {
-  //     navigate("/");
-  //   }
-  // }, [navigate, isAuthenticated]);
-
+  useEffect(() => {
+    if (isAuthenticated === false) {
+      navigate("/");
+    }
+  }, [dispatch, isAuthenticated]);
   return (
     <div className="container-fluid ecom-header">
       <div className="row">
@@ -92,9 +98,17 @@ const Header = () => {
                   : setUserProfile(userProfile + 1);
               }}
             >
-              Hello, <span className="user-name-color">{user.name}</span>{" "}
+              Hello,{" "}
+              <span className="user-name-color">{user.name.split(" ")[0]}</span>{" "}
               <MdKeyboardArrowDown />
               <div className={userProfile === 1 ? "cat-dropdown" : "hide"}>
+                {user.role === "admin" ? (
+                  <Link to={"/dashboard/"}>
+                    <MdDashboardCustomize /> Dashboard
+                  </Link>
+                ) : (
+                  ""
+                )}
                 <Link to="/user/account">
                   <CgProfile /> Your profile
                 </Link>
@@ -110,7 +124,10 @@ const Header = () => {
           <Link to={"/order"}>My order</Link>
           <Link to={"/mycart"} className="pr-center">
             <MdShoppingCart />
-            <sup className="text-danger">0</sup>&nbsp;My Cart
+            <sup className="text-danger">
+              {cartItems ? cartItems.length : 0}
+            </sup>
+            &nbsp;My Cart
           </Link>
         </div>
       </div>

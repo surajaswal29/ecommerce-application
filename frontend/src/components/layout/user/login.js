@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./user.css";
 import Logo from "../../images/bb-logo-1.svg";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import MetaData from "../metaData";
@@ -10,13 +10,15 @@ import Loader from "../loader/loader";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const { error, loading, isAuthenticated } = useSelector(
     (state) => state.user
   );
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
 
   const loginSubmit = (e) => {
     e.preventDefault();
@@ -25,14 +27,19 @@ const Login = () => {
     dispatch(userLogin(email, password));
   };
 
+  const redirect = location.search
+    ? location.search.split("=")[1]
+    : "/user/account";
+
   useEffect(() => {
     if (error) {
       console.log(error);
+      dispatch(clearErrors());
     }
     if (isAuthenticated) {
-      navigate("/user/account");
+      navigate(redirect);
     }
-  }, [navigate, isAuthenticated]);
+  }, [dispatch, error, navigate, isAuthenticated, redirect]);
 
   return (
     <>

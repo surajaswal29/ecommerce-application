@@ -16,6 +16,7 @@ export const LOAD_USER_FAIL = "LOAD_USER_FAIL";
 // update user constants
 export const UPDATE_USER_REQUEST = "UPDATE_USER_REQUEST";
 export const UPDATE_USER_SUCCESS = "UPDATE_USER_SUCCESS";
+export const UPDATE_USER_RESET = "UPDATE_USER_RESET";
 export const UPDATE_USER_FAIL = "UPDATE_USER_FAIL";
 
 // Log out constants

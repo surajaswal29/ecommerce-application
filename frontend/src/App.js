@@ -15,7 +15,8 @@ import MyCart from "./components/layout/cart/mycart.js";
 import Login from "./components/layout/user/login";
 import Signup from "./components/layout/user/signup";
 import Layout from "./components/layout/layout";
-import Account from "./components/layout/user/account";
+import Account from "./components/layout/user/Account.js";
+import ProtectedRoute from "./components/Route/ProtectedRoute.js";
 
 // import bootstrap and css file
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -24,7 +25,8 @@ import "./app.css";
 // creating App component
 const App = () => {
   const dispatch = useDispatch();
-  const { user, isAuthenticated } = useSelector((state) => state.user);
+  const { isAuthenticated } = useSelector((state) => state.user);
+  console.log(isAuthenticated);
 
   useEffect(() => {
     dispatch(loadUser());
@@ -40,13 +42,9 @@ const App = () => {
           <Route path="/products/:keyword" element={<Product />} />
           <Route path="/products/category/:category" element={<Product />} />
           <Route exact path="/mycart/" element={<MyCart />} />
-          <Route
-            exact
-            path="/user/account/"
-            element={
-              <Account userData={user} isAuthenticated={isAuthenticated} />
-            }
-          />
+        </Route>
+        <Route exact path="/" element={<ProtectedRoute />}>
+          <Route exact path="/user/account" element={<Account />} />
         </Route>
         <Route exact path="/user/login/" element={<Login />} />
         <Route exact path="/user/signup/" element={<Signup />} />
