@@ -1,7 +1,8 @@
 import React from "react";
+import Header from "../header/header";
 
 const Shipping = () => {
-  return <div>Shipping</div>;
+  return <Header />;
 };
 
 export default Shipping;
