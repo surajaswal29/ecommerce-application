@@ -15,7 +15,12 @@ import { country, state, city } from "country-state-city";
 import "./Shipping.css";
 
 const Shipping = () => {
-  return <Header />;
+  return (
+    <>
+      <Header />
+      <h1>Shipping Page</h1>
+    </>
+  );
 };
 
 export default Shipping;
