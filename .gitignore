@@ -1,3 +1,4 @@
 /video
 /node_modules
 /frontend/node_modules
+/backend/config/config.env
