@@ -10,6 +10,9 @@ import {
   CLEAR_ERRORS,
 } from "../constants/productConstants";
 
+//API URI
+import { MAIN_URI } from "../service/helper";
+
 export const getProduct = (
   keyword = "",
   category,
@@ -23,9 +26,9 @@ export const getProduct = (
     let link;
 
     if (!category) {
-      link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}`;
+      link = `${MAIN_URI}/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}`;
     } else {
-      link = `/api/v1/products?keyword=${keyword}&category=${category
+      link = `${MAIN_URI}/api/v1/products?keyword=${keyword}&category=${category
         .toString()
         .toLowerCase()}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${
         price[1]
@@ -46,7 +49,7 @@ export const getProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
 
-    const { data } = await axios.get(`/api/v1/product/${id}`);
+    const { data } = await axios.get(`${MAIN_URI}/api/v1/product/${id}`);
 
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data.product });
   } catch (error) {

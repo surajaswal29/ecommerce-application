@@ -2,7 +2,9 @@ const app = require("./app");
 const dotenv = require("dotenv");
 const connectDB = require("./config/database");
 const cloudinary = require("cloudinary");
-const { Server } = require("http");
+const cors = require("cors");
+
+const PORT = process.env.PORT || 4000;
 
 // handling uncaught exception
 process.on("uncaughtException", (err) => {
@@ -11,6 +13,18 @@ process.on("uncaughtException", (err) => {
 
   process.exit(1);
 });
+
+// CORS
+let corsOptions;
+app.use((req, res, next) => {
+  corsOptions = {
+    origin: `${req.protocol}://${req.headers.host}:${PORT}`,
+    optionsSuccessStatus: 200,
+  };
+});
+
+app.use(cors(corsOptions));
+
 // config
 dotenv.config({ path: "backend/config/config.env" });
 
@@ -24,7 +38,7 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-const server = app.listen(process.env.PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Server started at Port ${process.env.PORT}`);
 });
 

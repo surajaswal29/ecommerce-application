@@ -17,6 +17,9 @@ import {
   CLEAR_ERRORS,
 } from "../constants/userConstants";
 
+// API URI
+import { MAIN_URI } from "../service/helper";
+
 // Login Action Handler
 export const userLogin = (email, password) => async (dispatch) => {
   try {
@@ -25,7 +28,7 @@ export const userLogin = (email, password) => async (dispatch) => {
     });
     const config = { headers: { "Content-Type": "application/json" } };
     const { data } = await axios.post(
-      `/api/v1/login`,
+      `${MAIN_URI}/api/v1/login`,
       { email, password },
       config
     );
@@ -48,7 +51,11 @@ export const userRegister = (userData) => async (dispatch) => {
 
     const config = { headers: { "Content-Type": "multipart/form-data" } };
     console.log(userData);
-    const { data } = await axios.post(`/api/v1/register`, userData, config);
+    const { data } = await axios.post(
+      `${MAIN_URI}/api/v1/register`,
+      userData,
+      config
+    );
 
     dispatch({ type: REGISTER_USER_SUCCESS, payload: data.user });
   } catch (error) {
@@ -66,7 +73,7 @@ export const loadUser = () => async (dispatch) => {
       type: LOAD_USER_REQUEST,
     });
 
-    const { data } = await axios.get(`/api/v1/me`);
+    const { data } = await axios.get(`${MAIN_URI}/api/v1/me`);
     console.log(data);
     dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });
   } catch (error) {
@@ -85,7 +92,7 @@ export const updateUser = (updateUserData) => async (dispatch) => {
     const config = { headers: { "Content-Type": "multipart/form-data" } };
 
     const { data } = await axios.put(
-      `/api/v1/me/update`,
+      `${MAIN_URI}/api/v1/me/update`,
       updateUserData,
       config
     );
@@ -99,7 +106,7 @@ export const updateUser = (updateUserData) => async (dispatch) => {
 // logout
 export const logout = () => async (dispatch) => {
   try {
-    await axios.get(`/api/v1/logout`);
+    await axios.get(`${MAIN_URI}/api/v1/logout`);
     dispatch({ type: LOGOUT_USER_SUCCESS });
   } catch (error) {
     dispatch({ type: LOGOUT_USER_FAIL, payload: error.response.data.message });
