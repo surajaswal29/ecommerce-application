@@ -3,6 +3,10 @@ const app = express();
 // console.log(app);
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
+const cors = require("cors");
+
+// CORS
+app.use(cors());
 
 // Express-FileUpload Package
 const fileUpload = require("express-fileupload");
