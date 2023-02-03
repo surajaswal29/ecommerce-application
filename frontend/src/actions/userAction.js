@@ -32,7 +32,7 @@ export const userLogin = (email, password) => async (dispatch) => {
       { email, password },
       config
     );
-    console.log(data);
+    //console.log(data);
     dispatch({ type: LOGIN_SUCCESS, payload: data.user });
   } catch (error) {
     dispatch({
@@ -50,7 +50,7 @@ export const userRegister = (userData) => async (dispatch) => {
     });
 
     const config = { headers: { "Content-Type": "multipart/form-data" } };
-    console.log(userData);
+    //console.log(userData);
     const { data } = await axios.post(
       `${MAIN_URI}/api/v1/register`,
       userData,
@@ -74,7 +74,7 @@ export const loadUser = () => async (dispatch) => {
     });
 
     const { data } = await axios.get(`${MAIN_URI}/api/v1/me`);
-    console.log(data);
+    //console.log(data);
     dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });
   } catch (error) {
     dispatch({

@@ -40,7 +40,7 @@ const Signup = () => {
     myForm.set("email", email);
     myForm.set("password", password);
     myForm.set("avatar", avatar);
-    console.log(...myForm);
+    //console.log(...myForm);
     dispatch(userRegister(myForm));
   };
 
@@ -65,10 +65,11 @@ const Signup = () => {
 
   useEffect(() => {
     if (error) {
-      console.log(error);
+      //console.log(error);
+      alert(error);
     }
     if (isAuthenticated) {
-      navigate("/user/account");
+      navigate(`/user/account`);
     }
   }, [navigate, loading, isAuthenticated]);
 

@@ -13,7 +13,7 @@ exports.isAuthenticatedUser = catchAsyncError(async (req, res, next) => {
   const decodeData = JWT.verify(token, process.env.JWT_SECRET);
 
   req.user = await User.findById(decodeData.id);
-  console.log(req.user);
+  //console.log(req.user);
   next();
 });
 

@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 // Redux imports
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { loadUser } from "./actions/userAction";
 
 // components imports
@@ -26,8 +26,8 @@ import "./app.css";
 // creating App component
 const App = () => {
   const dispatch = useDispatch();
-  const { isAuthenticated } = useSelector((state) => state.user);
-  console.log(isAuthenticated);
+  // const { isAuthenticated } = useSelector((state) => state.user);
+  //console.log(isAuthenticated);?/
 
   useEffect(() => {
     dispatch(loadUser());

@@ -34,7 +34,7 @@ export const getProduct = (
         price[1]
       }`;
     }
-    console.log(link);
+    //console.log(link);
     const { data } = await axios.get(link);
     dispatch({ type: ALL_PRODUCT_SUCCESS, payload: data });
   } catch (error) {

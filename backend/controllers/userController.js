@@ -16,7 +16,7 @@ exports.registerUser = catchAsyncError(async (req, res, next) => {
 
   const { email, password } = req.body;
   const name = req.body.uname;
-  console.log(req.body);
+  //console.log(req.body);
 
   const user = await User.create({
     name,
@@ -176,7 +176,7 @@ exports.updateProfile = catchAsyncError(async (req, res, next) => {
     email: req.body.updateEmail,
   };
 
-  console.log(updateUserData);
+  //console.log(updateUserData);
   if (req.body.updateAvatar !== "") {
     const user = await User.findById(req.user.id);
 
@@ -198,7 +198,7 @@ exports.updateProfile = catchAsyncError(async (req, res, next) => {
       url: updateCloudinary.secure_url,
     };
   }
-  console.log(req.body.id);
+  //console.log(req.body.id);
 
   const user = await User.findByIdAndUpdate(req.user._id, updateUserData, {
     new: true,

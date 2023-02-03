@@ -24,7 +24,7 @@ const ProductDetails = () => {
 
   // quantity state
   const [quantity, onQuantityClick] = useState(1);
-  console.log(quantity);
+  //console.log(quantity);
   const options = {
     edit: false,
     color: "rgba(20,20,20,0.1)",

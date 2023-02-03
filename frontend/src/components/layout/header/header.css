@@ -1,7 +1,8 @@
 .ecom-header {
   width: 100%;
   background-color: var(--main-web-color);
-  padding: 10px 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .main-logo {
   display: flex;
