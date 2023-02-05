@@ -125,7 +125,7 @@
   display: none;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
   .info-bar,
   .address-box {
     display: none !important;
@@ -136,9 +136,6 @@
   }
   .search-bar input {
     width: 100%;
-  }
-  .ecom-header {
-    padding: 12px 0px;
   }
   .main-logo {
     justify-content: space-between;
