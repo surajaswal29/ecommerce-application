@@ -17,6 +17,7 @@ import { logout } from "../../../actions/userAction";
 // React Icons
 import { CiLogout } from "react-icons/ci";
 import { CgProfile } from "react-icons/cg";
+import { HiOutlineHome, HiUser, HiOutlineClipboardList } from "react-icons/hi";
 import {
   MdShoppingCart,
   MdKeyboardArrowDown,
@@ -54,7 +55,7 @@ const Header = () => {
     <div className="container-fluid ecom-header">
       <div className="row">
         {/* logo, category */}
-        <div className="col-md-4 main-logo d-flex align-items-center py-0">
+        <div className="col-md-4 main-logo align-items-center py-0">
           <div className="logo">
             <Link to="/">
               <img src={BBlogo} className="img-fluid" alt="Black Bag Logo" />
@@ -128,6 +129,23 @@ const Header = () => {
               {cartItems ? cartItems.length : 0}
             </sup>
             &nbsp;My Cart
+          </Link>
+        </div>
+        <div className="mobile-footer-nav">
+          <Link to={"/"}>
+            <HiOutlineHome />
+          </Link>
+          <Link to={"/user/login"}>
+            <HiUser />
+          </Link>
+          <Link to={"/mycart"}>
+            <MdShoppingCart />
+            <sup className="text-danger">
+              {cartItems ? cartItems.length : 0}
+            </sup>
+          </Link>
+          <Link to={"/order"}>
+            <HiOutlineClipboardList />
           </Link>
         </div>
       </div>

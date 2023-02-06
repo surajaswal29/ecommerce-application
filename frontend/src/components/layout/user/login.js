@@ -22,7 +22,7 @@ const Login = () => {
 
   const loginSubmit = (e) => {
     e.preventDefault();
-    console.log(`Email is:${email}, Password is:${password}`);
+    // console.log(`Email is:${email}, Password is:${password}`);
 
     dispatch(userLogin(email, password));
   };
