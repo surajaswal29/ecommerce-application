@@ -1,0 +1,17 @@
+.shippingForm{
+    padding: 20px;
+    width: 50vmax;
+}
+.shippingHeading{
+    text-align: center;
+    margin-top: 2rem;
+}
+.css-1hv8oq8-MuiStepLabel-label.Mui-active {
+    color: #000000 !important;
+}
+.css-1hv8oq8-MuiStepLabel-label.Mui-completed {
+    color: #1b8955 !important;
+}
+.cart-heading-txt{
+    font-size: 2rem;
+}

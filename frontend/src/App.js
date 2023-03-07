@@ -18,10 +18,14 @@ import Layout from "./components/layout/layout";
 import Account from "./components/layout/user/Account.js";
 import ProtectedRoute from "./components/Route/ProtectedRoute.js";
 import Shipping from "./components/layout/cart/Shipping.js";
+import ConfirmOrder from "./components/layout/cart/ConfirmOrder";
+import OrderPayment from "./components/layout/cart/OrderPayment";
 
 // import bootstrap and css file
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./app.css";
+
+
 
 // creating App component
 const App = () => {
@@ -44,9 +48,12 @@ const App = () => {
           <Route path="/products/category/:category" element={<Product />} />
           <Route exact path="/mycart/" element={<MyCart />} />
         </Route>
+        
         <Route exact path="/" element={<ProtectedRoute />}>
           <Route exact path="/user/account" element={<Account />} />
           <Route exact path="/shipping" element={<Shipping />} />
+          <Route exact path="/order/confirm" element={<ConfirmOrder />} />
+          <Route exact path="/order/payment" element={<OrderPayment />} />
         </Route>
         <Route exact path="/user/login/" element={<Login />} />
         <Route exact path="/user/signup/" element={<Signup />} />

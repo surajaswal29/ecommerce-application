@@ -11,6 +11,7 @@
 .bg-product .product-flex-board {
   display: flex;
   flex-flow: wrap;
+  justify-content: center;
 }
 .category-round-box {
   height: 120px;

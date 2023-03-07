@@ -24,11 +24,9 @@
 }
 .flex-gap {
   gap: 2.5vmax;
-  padding: 2rem !important;
 }
 .flex-gap-1 {
   gap: 2.5vmax;
-  /* padding: 2rem !important; */
 }
 .video-style {
   width: 250px;
