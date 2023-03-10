@@ -8,7 +8,7 @@ const cors = require("cors");
 
 // CORS
 app.use(cors({
-    origin:"http://localhost:3000",
+    origin:"https://themenhood.netlify.app",
     credentials:true
 }));
 
