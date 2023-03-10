@@ -10,8 +10,15 @@
     color: #000000 !important;
 }
 .css-1hv8oq8-MuiStepLabel-label.Mui-completed {
-    color: #1b8955 !important;
+    color: #31cd84 !important;
 }
 .cart-heading-txt{
     font-size: 2rem;
+}
+.form-container-wrapper{
+    width: 350px;
+    padding: 20px;
+    background-color: #fafafa;
+    border: 1px solid #e6e3e3;
+    border-radius: 5px;
 }

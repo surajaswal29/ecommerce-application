@@ -26,7 +26,9 @@ export const userLogin = (email, password) => async (dispatch) => {
     dispatch({
       type: LOGIN_REQUEST,
     });
-    const config = { headers: { "Content-Type": "application/json" } };
+    const config = { 
+      headers: { "Content-Type": "application/json" }
+    };
     const { data } = await axios.post(
       `${MAIN_URI}/api/v1/login`,
       { email, password },
@@ -74,7 +76,7 @@ export const loadUser = () => async (dispatch) => {
     });
 
     const { data } = await axios.get(`${MAIN_URI}/api/v1/me`);
-    //console.log(data);
+    // console.log(data);
     dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });
   } catch (error) {
     dispatch({

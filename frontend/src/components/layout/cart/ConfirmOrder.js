@@ -59,6 +59,7 @@ const ConfirmOrder = () => {
                   </div>
                   <div className="col-md-12 mt-3">
                     <table>
+                      <tbody>
                       <tr>
                         <td><strong>Name:</strong></td>
                         <td>{user.name}</td>
@@ -71,6 +72,7 @@ const ConfirmOrder = () => {
                         <td><strong>Address:</strong></td>
                         <td>{address}</td>
                       </tr>
+                      </tbody>
                     </table>
                   </div>
                 

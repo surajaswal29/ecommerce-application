@@ -20,7 +20,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { saveShippingInfo } from "../../../actions/cartAction"; 
 
 //country-state-city package
-import { Country, State,City } from "country-state-city";
+import { Country, State } from "country-state-city";
 
 // CSS File
 import "./Shipping.css";
@@ -59,7 +59,7 @@ const Shipping = () => {
       <Header />
      
       <div className="container">
-      <CheckoutSteps activeStep={0}/>
+        <CheckoutSteps activeStep={0}/>
         <div className="row mt-2">
             <div className="col-md-12">
               <h2 className="shippingHeading">Shipping Details</h2>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ConfirmItemCard = ({ item, deleteCartItem }) => {
+const ConfirmItemCard = ({ item }) => {
   return (
     <>
       <div className="item-wrapper d-flex">
