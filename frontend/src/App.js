@@ -19,6 +19,7 @@ import Home from "./components/layout/Home/Home";
 import ProductDetails from "./components/layout/product/productDetails.js";
 import Product from "./components/layout/product/product.js";
 import MyCart from "./components/layout/cart/mycart.js";
+import MyOrder from "./components/layout/order/MyOrder";
 import Login from "./components/layout/user/login";
 import Signup from "./components/layout/user/signup";
 import Layout from "./components/layout/layout";
@@ -72,6 +73,7 @@ const App = () => {
           <Route exact path="/user/account" element={<Account />} />
           <Route exact path="/shipping" element={<Shipping />} />
           <Route exact path="/order/confirm" element={<ConfirmOrder />} />
+          <Route exact path="/orders/" element={<MyOrder/>}/>
           {
             stripeApiKey && ( 
                     <Route exact path="/order/payment" element={(

@@ -122,7 +122,7 @@ const Header = () => {
             <Link to={"/user/login"}>Hello, Sign in</Link>
           )}
 
-          <Link to={"/order"}>My order</Link>
+          <Link to={"/orders/"}>My order</Link>
           <Link to={"/mycart"} className="pr-center">
             <MdShoppingCart />
             <sup className="text-danger">

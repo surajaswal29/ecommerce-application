@@ -14,6 +14,10 @@ const MyCart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const remCartEmpty = ()=>{
+    alert("Cart is Empty!")
+  }
+
   const { cartItems } = useSelector((state) => state.cart);
 
   let subTotal = 0;
@@ -74,7 +78,7 @@ const MyCart = () => {
               <table className="cart-total-details">
                 <tbody>
                   <tr>
-                    <td>Shipping/Delievery(4-5 Business Days)</td>
+                    <td>Shipping/Delivery(4-5 Business Days)</td>
                     <td>Free</td>
                   </tr>
                   <tr>
@@ -106,9 +110,18 @@ const MyCart = () => {
             </div>
           </div>
 
-          <div className="check-button bg-dark" onClick={checkOutHandler}>
-            Proceed to Checkout
-          </div>
+          {
+            localStorage.getItem("cartItems") == null?
+            (
+              <div className="check-button bg-dark" onClick={remCartEmpty}>
+                Proceed to Checkout
+              </div>
+            ):(
+              <div className="check-button bg-dark" onClick={checkOutHandler}>
+                Proceed to Checkout
+              </div>
+            )
+          }
         </div>
       </div>
     </div>

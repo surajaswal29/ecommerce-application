@@ -6,7 +6,7 @@ const ConfirmItemCard = ({ item }) => {
     <>
       <div className="item-wrapper d-flex">
         <div className="item-img">
-          <img src={item.images[0].url} alt="product" />
+          <img src={item.images} alt="product" />
         </div>
         <div className="item-name">
           <span>{item.name}</span>

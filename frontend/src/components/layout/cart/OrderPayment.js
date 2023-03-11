@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import {CardNumberElement,CardExpiryElement,CardCvcElement,useStripe,useElements} from '@stripe/react-stripe-js';
 // import { Typography } from '@mui/material';
 
@@ -12,6 +12,8 @@ import CheckoutSteps from "./CheckoutSteps.js"
 import Footer from "../footer/footer";
 import {useNavigate } from 'react-router';
 import { MAIN_URI } from '../../../service/helper';
+
+import {createOrder, clearErrors} from "../../../actions/orderAction";
 
 
 
@@ -28,11 +30,25 @@ const OrderPayment = () => {
 
   const {shippingInfo, cartItems} = useSelector((state)=>state.cart);
   const {user} = useSelector((state)=>state.user);
+  const {error} = useSelector((state)=>state.newOrder);
 
+
+  // creating payment data object
   const paymentData = {
     amount: Math.round(orderInfo.total * 100),
   }
 
+  // creating order object
+  const order = {
+    shippingInfo,
+    orderItems:cartItems,
+    itemsPrice: orderInfo.subTotal,
+    taxPrice:orderInfo.tax,
+    shippingPrice:orderInfo.shippingCharges,
+    totalPrice:orderInfo.total
+  };
+
+  // declaring and defining submit handler
   const submitHandler = async (e)=>{
     e.preventDefault();
 
@@ -74,6 +90,16 @@ const OrderPayment = () => {
         alert(result.error.message);
       }else{
         if(result.paymentIntent.status === "succeeded"){
+
+          order.paymentInfo = {
+            id:result.paymentIntent.id,
+            status:result.paymentIntent.status,
+          };
+
+          dispatch(createOrder(order));
+
+          localStorage.removeItem("cartItems");
+
           navigate('/payment/success');
         }else{
           alert("There's an issue while processing your payment request!");
@@ -87,6 +113,12 @@ const OrderPayment = () => {
     
   }
 
+  useEffect(()=>{
+    if(error){
+      alert(error);
+      dispatch(clearErrors());
+    }
+  });
 
   return (
     <>

@@ -9,10 +9,11 @@ const ProtectedRoute = () => {
   return (
     <>
       {!loading &&
-        (isAuthenticated ? (
-          <Outlet />
-        ) : (
+        ((isAuthenticated === false) ? (
           <Navigate to={"/user/login/"} replace="true" />
+          
+        ) : (
+          <Outlet />
         ))}
     </>
   );

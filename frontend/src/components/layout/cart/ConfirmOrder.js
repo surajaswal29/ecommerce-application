@@ -41,6 +41,7 @@ const ConfirmOrder = () => {
       // store data object in session storage
       sessionStorage.setItem("OrderInfo",JSON.stringify(data));
 
+      localStorage.removeItem('shippingInfo');
       navigate('/order/payment');
     }
 
