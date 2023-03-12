@@ -24,6 +24,5 @@
     "nodemailer": "^6.8.0",
     "stripe": "^11.13.0",
     "validator": "^13.7.0"
-  },
-  "proxy":"http://localhost:4000"
+  }
 }

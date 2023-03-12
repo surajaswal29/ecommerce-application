@@ -44,11 +44,11 @@ const App = () => {
   const [stripeApiKey, setstripeApiKey] = useState("");
 
   const getStripeApiKey = async()=>{
-    const {data} = await axios.get(`${MAIN_URI}/api/v1/stripeapikey`);
+    const {data} = await axios.get(`${MAIN_URI}/api/v1/stripeapikey`,{
+      withCredentials:true,
+    });
     setstripeApiKey(data.StripeAPIKey);
   }
- 
-  console.log(stripeApiKey);
 
   useEffect(() => {
       dispatch(loadUser());

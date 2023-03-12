@@ -27,7 +27,8 @@ export const userLogin = (email, password) => async (dispatch) => {
       type: LOGIN_REQUEST,
     });
     const config = { 
-      headers: { "Content-Type": "application/json" }
+      headers: { "Content-Type": "application/json" },
+      withCredentials:true,
     };
     const { data } = await axios.post(
       `${MAIN_URI}/api/v1/login`,
@@ -51,7 +52,10 @@ export const userRegister = (userData) => async (dispatch) => {
       type: REGISTER_USER_REQUEST,
     });
 
-    const config = { headers: { "Content-Type": "multipart/form-data" } };
+    const config = { 
+      headers: { "Content-Type": "multipart/form-data" },
+      withCredentials:true,
+    };
     //console.log(userData);
     const { data } = await axios.post(
       `${MAIN_URI}/api/v1/register`,
@@ -75,7 +79,9 @@ export const loadUser = () => async (dispatch) => {
       type: LOAD_USER_REQUEST,
     });
 
-    const { data } = await axios.get(`${MAIN_URI}/api/v1/me`);
+    const { data } = await axios.get(`${MAIN_URI}/api/v1/me`,{
+      withCredentials:true,
+    });
     // console.log(data);
     dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });
   } catch (error) {
@@ -91,7 +97,9 @@ export const updateUser = (updateUserData) => async (dispatch) => {
   try {
     dispatch({ type: UPDATE_USER_REQUEST });
 
-    const config = { headers: { "Content-Type": "multipart/form-data" } };
+    const config = { headers: { "Content-Type": "multipart/form-data" },
+      withCredentials:true,
+    };
 
     const { data } = await axios.put(
       `${MAIN_URI}/api/v1/me/update`,
@@ -108,13 +116,15 @@ export const updateUser = (updateUserData) => async (dispatch) => {
 // logout
 export const logout = () => async (dispatch) => {
   try {
-    await axios.get(`${MAIN_URI}/api/v1/logout`);
+    await axios.get(`${MAIN_URI}/api/v1/logout`,{
+      withCredentials:true,
+    });
     dispatch({ type: LOGOUT_USER_SUCCESS });
   } catch (error) {
     dispatch({ type: LOGOUT_USER_FAIL, payload: error.response.data.message });
   }
 };
-// Clearing Erros
+// Clearing Errors
 export const clearErrors = () => async (dispatch) => {
   dispatch({ type: CLEAR_ERRORS });
 };

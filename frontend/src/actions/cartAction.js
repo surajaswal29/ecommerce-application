@@ -10,7 +10,9 @@ import { MAIN_URI } from "../service/helper";
 
 // ADD to cart
 export const addItemsToCart = (id, quantity) => async (dispatch, getState) => {
-  const { data } = await axios.get(`${MAIN_URI}/api/v1/product/${id}`);
+  const { data } = await axios.get(`${MAIN_URI}/api/v1/product/${id}`,{
+    withCredentials:true,
+  });
 
   dispatch({
     type: ADD_TO_CART,

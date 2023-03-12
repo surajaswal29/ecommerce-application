@@ -13,14 +13,15 @@ import { MAIN_URI } from "../service/helper";
 
 // Create Order
 export const createOrder = (order)=> async (dispatch, getState)=>{
-    console.log(JSON.stringify(order));
     try {
         dispatch({type:CREATE_ORDER_REQUEST});
 
-        const config = { headers: { "Content-Type": "application/json" } };
+        const config = { headers: { "Content-Type": "application/json" },
+            withCredentials:true,
+           };
 
         const {data} = await axios.post(`${MAIN_URI}/api/v1/order/new`,order,config);
-            console.log(data);
+    
         dispatch({type:CREATE_ORDER_SUCCESS, payload:data});
 
     } catch (error) {
@@ -36,15 +37,15 @@ export const myOrders = ()=> async (dispatch)=>{
     try {
         dispatch({type:MY_ORDER_REQUEST});
 
-        const {data} = await axios.get(`${MAIN_URI}/api/v1/orders/me`)
+        const {data} = await axios.get(`${MAIN_URI}/api/v1/orders/me`,{
+            withCredentials:true,
+          });
 
         dispatch({
             type:MY_ORDER_SUCCESS,
             payload:data.orders,
 
-        })
-        
-        console.log(data);
+        });
     } catch (error) {
         dispatch({
             type:MY_ORDER_FAIL,

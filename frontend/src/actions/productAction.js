@@ -35,7 +35,9 @@ export const getProduct = (
       }`;
     }
     //console.log(link);
-    const { data } = await axios.get(link);
+    const { data } = await axios.get(link,{
+      withCredentials:true,
+    });
     dispatch({ type: ALL_PRODUCT_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -49,7 +51,9 @@ export const getProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
 
-    const { data } = await axios.get(`${MAIN_URI}/api/v1/product/${id}`);
+    const { data } = await axios.get(`${MAIN_URI}/api/v1/product/${id}`,{
+      withCredentials:true,
+    });
 
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data.product });
   } catch (error) {
