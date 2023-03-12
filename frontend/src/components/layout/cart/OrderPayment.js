@@ -60,6 +60,7 @@ const OrderPayment = () => {
         headers:{
           "Content-Type":"application/json",
         },
+        withCredentials:true,
       };
 
       const {data} = await axios.post(`${MAIN_URI}/api/v1/payment/process`,paymentData,config);

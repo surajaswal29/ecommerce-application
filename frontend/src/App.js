@@ -54,6 +54,7 @@ const App = () => {
       dispatch(loadUser());
 
       getStripeApiKey();
+      // console.log("You are now visiting TheMenHood - An E-commerce Platform for Mens 🖤🖤");
 
   }, []);
 

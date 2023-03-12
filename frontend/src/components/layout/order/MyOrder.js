@@ -21,8 +21,6 @@ const MyOrder = () => {
 
   const {orders, error, loading}=useSelector((state)=>state.myOrders);
 
-  console.log(orders);
-
   useEffect(() => {
 
     if(error){

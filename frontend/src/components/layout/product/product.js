@@ -99,7 +99,7 @@ const AllProduct = () => {
                   <Category />
                 </div>
               </div>
-              <div className="col-md-10 d-flex flex-wrap flex-gap">
+              <div className="col-md-10 d-flex flex-wrap flex-gap pt-3">
                 {products && products.length > 0 ? (
                   products.map((product) => (
                     <ProductCard product={product} key={product._id} />
