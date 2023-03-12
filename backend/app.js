@@ -6,9 +6,11 @@ const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const cors = require("cors");
 
+const origin = process.env.NODE_ENV === "development" ? "http://localhost:3000":"https://themenhood.netlify.app";
+
 // CORS
 app.use(cors({
-    origin:"http://localhost:3000",
+    origin: origin,
     credentials:true
 }));
 
