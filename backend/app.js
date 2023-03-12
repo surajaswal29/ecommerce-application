@@ -6,6 +6,9 @@ const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const cors = require("cors");
 
+// config
+dotenv.config({ path: "backend/config/config.env" });
+
 const origin = process.env.NODE_ENV === "development" ? "http://localhost:3000":"https://themenhood.netlify.app";
 
 // CORS
@@ -13,9 +16,6 @@ app.use(cors({
     origin: origin,
     credentials:true
 }));
-
-// config
-dotenv.config({ path: "backend/config/config.env" });
 
 // Express-FileUpload Package
 const fileUpload = require("express-fileupload");
