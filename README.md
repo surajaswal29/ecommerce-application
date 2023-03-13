@@ -35,5 +35,3 @@ A Fulll-Satck ecommerce web application in MERN stack
 </a>
 <hr>
 </br>
-
-![Alt](https://repobeats.axiom.co/api/embed/13fa6388761a060972638cbe77a0ece9d9890e89.svg "Repobeats analytics image")
