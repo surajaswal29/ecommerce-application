@@ -5,6 +5,7 @@ A Fulll-Satck ecommerce web application in MERN stack
 </div>
 </br>
 
+<h4>API of this application is live at: https://themenhood.onrender.com/api/v1/</h4>
 <h4>This Web Application is Live at : https://themenhood.netlify.app/</h4>
 <hr>
 </br>
