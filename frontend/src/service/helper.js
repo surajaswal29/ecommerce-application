@@ -5,4 +5,4 @@ export const MAIN_URI =
     : "https://themenhood.onrender.com";
 
 // Production URI
-// export const MAIN_URI = "https://themenhood.onrender.com";
+export const FRONT_MAIN_URI = "https://themenhood.netlify.com";

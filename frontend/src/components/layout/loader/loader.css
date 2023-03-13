@@ -8,6 +8,9 @@
   display: grid;
   place-items: center;
 }
+.loader-cover{
+  background: #000;
+}
 .loader-wrap .loader {
   width: 8vmax;
   height: 8vmax;

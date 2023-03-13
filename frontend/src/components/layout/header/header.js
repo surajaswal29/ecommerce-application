@@ -18,6 +18,7 @@ import { logout } from "../../../actions/userAction";
 import { CiLogout } from "react-icons/ci";
 import { CgProfile } from "react-icons/cg";
 import { HiHome, HiOutlineClipboardList,HiOutlineUserCircle } from "react-icons/hi";
+import {GiHamburgerMenu} from "react-icons/gi";
 // import {FaUser} from "react-icons/fa";
 import {
   MdShoppingCart,
@@ -136,6 +137,10 @@ const Header = () => {
           <Link to={"/#main-home"}>
             <HiHome />
             <span>Home</span>
+          </Link>
+          <Link to={"/products#products"}>
+            <GiHamburgerMenu/>
+            <span>Products</span>
           </Link>
           <Link to={isAuthenticated?"/user/account#user-account":"/user/login"}>
             <HiOutlineUserCircle />

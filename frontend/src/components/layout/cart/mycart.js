@@ -9,6 +9,7 @@ import { MdKeyboardArrowLeft } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import CartItemCard from "./CartItemCard";
 import { removeItemsFromCart } from "../../../actions/cartAction.js";
+import { FRONT_MAIN_URI } from "../../../service/helper";
 
 const MyCart = () => {
   const dispatch = useDispatch();
@@ -39,7 +40,7 @@ const MyCart = () => {
       <div className="row mt-3">
         <div className="col-md-12">
           <a
-            href="http://localhost:3000/products"
+            href={`${FRONT_MAIN_URI}/products`}
             className="text-decoration-none text-dark d-flex align-items-center"
           >
             <MdKeyboardArrowLeft />

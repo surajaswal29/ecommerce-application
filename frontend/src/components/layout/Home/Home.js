@@ -170,6 +170,7 @@ const Home = () => {
                 <Blog img="https://www.apetogentleman.com/wp-content/uploads/2022/01/mens-smart-casual-dress-code-guide-2-720x420.jpg" />
                 <Blog img="https://www.apetogentleman.com/wp-content/uploads/2022/12/CoolestDadShoeMain1-450x340.jpg" />
                 <Blog img="https://www.apetogentleman.com/wp-content/uploads/2018/10/Winter-Coats-450x340.png" />
+                <Blog img="https://www.apetogentleman.com/wp-content/uploads/2018/10/Winter-Coats-450x340.png" />
               </div>
             </div>
           </div>

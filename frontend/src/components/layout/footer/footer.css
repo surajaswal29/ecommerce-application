@@ -41,7 +41,7 @@
   display: flex;
   flex-flow: column;
 }
-@media (max-width: 400px) {
+@media (max-width: 576px) {
   .main-footer > * {
     justify-content: center;
     text-align: center;

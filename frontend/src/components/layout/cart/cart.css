@@ -98,6 +98,7 @@
 @media (max-width:576px) {
   .item-wrapper{
     flex-flow: wrap;
+    width: 100%;
   }
   .item-wrapper .item-img {
     height: 90px;

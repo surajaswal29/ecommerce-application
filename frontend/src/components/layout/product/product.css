@@ -222,9 +222,43 @@ input[type="number"] {
   box-sizing: border-box;
   margin-top: 10px;
 }
+.filter-icon{
+  display: none;
+}
 @media (max-width: 576px) {
   .product-heading{
     font-size: 1.5rem;
+  }
+  .filter-icon{
+    display: flex;
+    background: #000;
+    border: 1px solid #989696;
+    padding:4px 5px;
+    border-radius: 5px;
+    text-align: center;
+    color: #fff;
+  }
+  .filter-icon svg{
+    color: #fff;
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+  .all-product-heading h1{
+    /* text-align: center; */
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+  .side-bar{
+    transform: translateX(-100%);
+    position: absolute;
+    transition: all 800ms;
+  }
+  .sidebar-animate{
+    transform: translateX(0%);
+    transition: all 600ms;
+    position: relative;
+    z-index: 1000;
+    background: #f7f7f7;
   }
   .flex-gap {
     grid-gap: 1vmax;

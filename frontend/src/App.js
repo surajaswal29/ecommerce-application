@@ -50,6 +50,8 @@ const App = () => {
     setstripeApiKey(data.StripeAPIKey);
   }
 
+  // console.log(new History());
+
   useEffect(() => {
       dispatch(loadUser());
 

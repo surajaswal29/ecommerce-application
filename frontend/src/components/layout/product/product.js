@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import ProductCard from "../product/productCard";
 import Loader from "../loader/loader";
 import NotExist from "./notExist";
@@ -14,6 +14,8 @@ import { useParams } from "react-router";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import Slider from "@mui/material/Slider";
 import { CiFilter } from "react-icons/ci";
+import { BiFilterAlt } from "react-icons/bi";
+import { FRONT_MAIN_URI } from "../../../service/helper";
 
 const AllProduct = () => {
   // query parameters
@@ -29,6 +31,14 @@ const AllProduct = () => {
 
   const priceHandler = (_event, newPrice) => {
     setPrice(newPrice);
+  };
+  const filterBtn = useRef(null);
+  const sideBar = useRef(null);
+
+  const showFiltersOnMobile = (e)=>{
+      e.preventDefault();
+
+      sideBar.current.classList.toggle('sidebar-animate');
   };
 
   const dispatch = useDispatch();
@@ -59,11 +69,11 @@ const AllProduct = () => {
           <MetaData
             title={`${keyword || category ? termToPut : "All Products"}`}
           />
-          <div className="container-fluid">
+          <div className="container-fluid" id="products">
             <div className="row mt-3 px-2 bd-bottom">
               <div className="col-md-12">
                 <a
-                  href="http://localhost:3000/"
+                  href={FRONT_MAIN_URI}
                   className="text-decoration-none text-dark d-flex align-items-center"
                 >
                   <MdKeyboardArrowLeft />
@@ -72,10 +82,11 @@ const AllProduct = () => {
               </div>
               <div className="col-md-12 mt-2 all-product-heading pr-center-even">
                 <h1>{keyword || category ? termToPut : "All Products"}</h1>
+                <span className="filter-icon" onClick={(e)=>showFiltersOnMobile(e)} ref={filterBtn}>Filter <BiFilterAlt /></span>
               </div>
             </div>
             <div className="row">
-              <div className="col-md-2 bd-right side-bar">
+              <div className="col-md-2 bd-right side-bar" ref={sideBar}>
                 <h4 className="side-heading">
                   <CiFilter />
                   Filters
@@ -122,8 +133,6 @@ const AllProduct = () => {
                     onChange={setCurrentPageNo}
                     nextPageText="Next"
                     prevPageText="Prev"
-                    firstPageText="First"
-                    lastPageText="Last"
                     itemClass="page-item"
                     linkClass="page-link"
                     activeClass="active"

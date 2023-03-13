@@ -66,11 +66,32 @@
 .category-box-overflow::-webkit-scrollbar-thumb {
   background: #888;
 }
+
 .blog-box {
-  max-width: 420px !important;
-  background-color: #faf8f8;
+  background-color: #f7f6f6;
   padding: 15px;
 }
+
+
+
+@media (min-width:976px) {
+  .blog-box {
+    max-width: 250px !important;
+  }
+  .blog-img {
+    height: 150px;
+  }
+}
+
+@media (min-width:1200px) {
+  .blog-box {
+    max-width: 350px !important;
+  }
+  .blog-img {
+    height: 250px;
+  }
+}
+
 .blog-box:hover {
   box-shadow: 2px 2px 20px rgba(141, 141, 141, 0.336);
   transition: all ease-in-out 400ms;
@@ -82,9 +103,6 @@
 .blog-box a:hover {
   text-decoration: none;
   color: rgb(78, 78, 78);
-}
-.blog-img {
-  height: 250px;
 }
 .blog-box img {
   width: 100%;
