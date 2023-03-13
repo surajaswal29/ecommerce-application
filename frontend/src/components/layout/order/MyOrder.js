@@ -40,7 +40,7 @@ const MyOrder = () => {
           <>
           <MetaData title="My Order"/>
             <Header/>
-              <section className='container'>
+              <section className='container' id="my-order">
                   <div className='row mt-4'>
                     <div className="col-md-12 pr-center">
                       <div className="order-container-wrap">
@@ -59,7 +59,7 @@ const MyOrder = () => {
                               </div>
                             ):(
                               <div className='col-md-12 mt-3'>
-                                  <div className="item-wrapper text-center">
+                                  <div className="item-wrapper-order text-center">
                                     <p className="text-center">No Order Placed Yet!</p>
                                     <Link to={"/products"} className="btn btn-primary">
                                       Start shopping

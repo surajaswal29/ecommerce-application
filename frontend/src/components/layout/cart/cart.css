@@ -91,3 +91,36 @@
   font-weight: 500;
   font-size: 16px;
 }
+.mobile-hide-details{
+  display: none;
+}
+
+@media (max-width:576px) {
+  .item-wrapper{
+    flex-flow: wrap;
+  }
+  .item-wrapper .item-img {
+    height: 90px;
+    width: 90px;
+  }
+  .mobile-hide-details{
+    display: block;
+  }
+  .item-quantity-price span{
+    display: none !important;
+  }
+  .item-name{
+    width: 60% !important;
+  }
+  .item-name span{
+    font-size: 10px;
+  }
+  .item-name span strong{
+    font-weight: 500;
+    color: #000;
+  }
+  .item-name span:first-of-type {
+    font-size: 1rem !important;
+    font-weight: 400;
+  }
+}

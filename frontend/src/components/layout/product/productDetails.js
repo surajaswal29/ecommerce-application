@@ -92,14 +92,14 @@ const ProductDetails = () => {
                   </Swiper>
                 </div>
               </div>
-              <div className="col-md-7">
+              <div className="col-md-7 product-desc-details">
                 <h1>{product.name}</h1>
                 <span>Product ID: {product._id}</span>
-                <div className="ratings d-flex align-items-center">
+                <div className="product-details-ratings d-flex align-items-center">
                   <ReactStar {...options} value={product.ratings} /> &nbsp;
                   &nbsp; <span>({product.numOfReviews} reviews)</span>
                 </div>
-                <h2>
+                <h2 className="product-price">
                   {product.price &&
                     product.price.toLocaleString("en-IN", {
                       style: "currency",

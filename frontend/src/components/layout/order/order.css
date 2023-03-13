@@ -5,7 +5,7 @@
     }
 }
 
-.item-wrapper {
+.item-wrapper-order {
     width: 100%;
     border-radius: 0px 0px 5px 5px;
     border: 1px solid #d4d3d3;
@@ -14,7 +14,7 @@
     position: relative;
     background-color: #ffffff;
   }
-  .item-wrapper-inner{
+  .item-wrapper-order .item-wrapper-inner{
     border-radius: 5px;
   }
   .od-text{
@@ -108,4 +108,12 @@
   .full-total span {
     font-weight: 500;
     font-size: 16px;
+  }
+  @media (max-width:576px){
+      .od-text{
+        font-size: 11px;
+      }
+      .order-top-marg{
+        margin-top: 6px !important;
+      }
   }

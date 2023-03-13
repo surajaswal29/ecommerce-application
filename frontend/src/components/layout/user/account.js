@@ -36,7 +36,7 @@ const Account = () => {
           <>
             <Header />
             <MetaData title={`${user.name} Profile`} />
-            <div className="container-fluid pr-center">
+            <div className="container-fluid pr-center" id="user-account">
               <div className="container-account-wrap mt-3">
                 <div className="row">
                   <div className="col-md-12 pr-center">

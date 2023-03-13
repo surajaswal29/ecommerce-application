@@ -13,8 +13,17 @@ const CartItemCard = ({ item, deleteCartItem }) => {
           <span>{item.name}</span>
           <br />
           <span>
-            Product ID{" "}
+            #ID{" "}
             <Link to={`/product/${item.product}`}>{item.product}</Link>
+          </span>
+          <span className="mobile-hide-details">Quantity: {item.quantity}</span>
+          <span className="mobile-hide-details">
+            <strong>
+              {(item.quantity * item.price).toLocaleString("en-IN", {
+                style: "currency",
+                currency: "INR",
+              })}
+            </strong>
           </span>
         </div>
         <div className="item-quantity-price d-flex justify-content-between">

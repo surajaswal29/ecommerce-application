@@ -82,8 +82,36 @@ const Home = () => {
       ) : (
         <>
           <MetaData title="Home - The Men Hood" />
+          <div className="mobile-category-view">
+              <div className="row mt-1">
+                <div className="col-md-12">
+                  <div className="category-box-overflow">
+                    <Swiper slidesPerView={"auto"}>
+                      {categoryData.map((data) => {
+                        const boxCat = (
+                          <SwiperSlide key={`${data.category}${data.imgURL}`}>
+                            <Link to={`/products/category/${data.category}`}>
+                              <div className="category-box-home">
+                                <div className="category-round-box">
+                                  <img
+                                    src={data.imgURL}
+                                    alt="category round box"
+                                  />
+                                </div>
+                                <span>{data.category}</span>
+                              </div>
+                            </Link>
+                          </SwiperSlide>
+                        );
+                        return boxCat;
+                      })}
+                    </Swiper>
+                  </div>
+                </div>
+              </div>
+          </div>
           <MainBanner />
-          <div className="container bg-product">
+          <div className="container bg-product" id="main-home">
             <div className="row">
               <div className="col-md-12">
                 <h2 className="product-heading text-center">
@@ -100,7 +128,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="container-fluid">
+          <div className="container-fluid desktop-categories-view">
             <div className="row mt-4">
               <div className="col-md-12">
                 <h2 className="product-heading">Categories</h2>
@@ -133,8 +161,8 @@ const Home = () => {
               </div>
             </div>
             <div className="row mt-5">
-              <div className="col-md-12">
-                <h2 className="product-heading">Blogs</h2>
+              <div className="col-md-12 border-top">
+                <h2 className="product-heading text-center text-sm-start">Blogs</h2>
               </div>
             </div>
             <div className="row mt-1">

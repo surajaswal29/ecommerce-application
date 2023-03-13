@@ -35,7 +35,7 @@ const MyCart = () => {
     navigate("/user/login?redirect=shipping");
   };
   return (
-    <div className="container">
+    <div className="container" id="my-cart">
       <div className="row mt-3">
         <div className="col-md-12">
           <a

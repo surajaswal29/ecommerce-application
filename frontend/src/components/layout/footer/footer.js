@@ -15,21 +15,21 @@ const Footer = () => {
   return (
     <div className="container-fluid main-footer">
       <div className="row p-5">
-        <div className="col-md-2">
+        <div className="footer-div-section col-md-2">
           <img
             src={BBLogo1}
             alt="Black Bag Logo"
             className="img-fluid bb-logo"
           />
-          <span className="text-light mt-2">Fashion Does Matter.</span>
+          {/* <span className="text-light mt-2">Fashion Does Matter.</span> */}
         </div>
-        <div className="col-md-3 px-md-5">
+        <div className="footer-div-section col-md-3 px-md-5">
           <strong className="text-light">Categories</strong>
           <div className="nav-footer">
             <Category />
           </div>
         </div>
-        <div className="col-md-2 px-md-3">
+        <div className="footer-div-section col-md-2 px-md-3">
           <strong className="text-light">Links</strong>
           <div className="nav-footer">
             <a href="https://www.facebook.com/">About</a>
@@ -37,7 +37,7 @@ const Footer = () => {
             <a href="https://www.facebook.com/">Privacy Policy</a>
           </div>
         </div>
-        <div className="col-md-2 px-md-3">
+        <div className="footer-div-section col-md-2 px-md-3">
           <strong className="text-light">Connect with Us</strong>
           <div className="nav-footer">
             <a href="https://www.facebook.com/">Facebook</a>
@@ -45,7 +45,7 @@ const Footer = () => {
             <a href="https://www.facebook.com/">Instagram</a>
           </div>
         </div>
-        <div className="col-md-3 app-store social-box pr-md-2">
+        <div className="footer-div-section col-md-3 app-store social-box pr-md-2">
           <strong className="text-light">Download our Mobile App</strong>
           <div className="app-store-box">
             <a href="https://play.google.com/store/games?hl=en&gl=US&pli=1">
@@ -58,7 +58,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="row">
-        <div className="col-md-12 text-light copy-right-footer">
+        <div className="footer-div-section col-md-12 text-light copy-right-footer">
           Copyright {today.getFullYear()} &copy; The Men Hood
         </div>
       </div>

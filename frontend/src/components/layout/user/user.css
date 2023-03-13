@@ -156,3 +156,19 @@
 .form-wrap-user-1 label {
   margin-bottom: 4px;
 }
+
+@media (max-width:576px) {
+  .container-account-wrap {
+    width: 95%;
+  }
+  .profile-data-box h4{
+    margin-top: 15px;
+  }
+  .account-profile-wrap{
+    padding: 20px;
+  }
+  .account-profile-wrap .profile-img {
+    height: 150px;
+    width: 150px;
+  }
+}

@@ -11,31 +11,31 @@ const ConfirmItemCard = ({ item }) => {
     <div className="order-card-wrapper mb-5">
       <div className="order-header-wrap">
           <div className="row">
-              <div className="col-md-2">
+              <div className="col-4 col-md-2">
                   <p className="od-text">ORDER PLACED</p>
                   <p className="od-text">{String(item.createdAt).split("T")[0]}</p>
               </div>
-              <div className="col-md-2">
+              <div className="col-4 col-md-2">
                   <p className="od-text">Total</p>
                   <p className="od-text">₹ {item.totalPrice.toFixed(2)}</p>
               </div>
-              <div className="col-md-2">
+              <div className="col-4 col-md-2">
                   <p className="od-text">SHIP TO</p>
                   <p className="od-text"><strong>{user.name}</strong></p>
               </div>
-              <div className="col-md-6">
-                  <p className="od-text text-end">ORDER ID: <strong>{item._id}</strong></p>
-                  <p className="od-text text-end">
+              <div className="col-md-6 order-top-marg">
+                  <p className="od-text text-start text-md-end">ORDER ID: <strong>{item._id}</strong></p>
+                  <p className="od-text text-start text-md-end">
                     <Link to={`/order/${item._id}`}>View  Order details</Link> | &nbsp;
                     <Link to={`/order/invoice`}>Invoice</Link>
                   </p>
               </div>
           </div>
       </div>
-      <div className="item-wrapper">
+      <div className="item-wrapper-order">
       {
         item.orderItems.map((productItems)=>(
-          <div className="item-wrapper item-wrapper-inner d-flex" key={productItems._id}>
+          <div className="item-wrapper-order item-wrapper-inner d-flex" key={productItems._id}>
               <div className="item-img">
                 <img src={productItems.images} alt="product" />
               </div>

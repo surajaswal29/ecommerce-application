@@ -17,7 +17,8 @@ import { logout } from "../../../actions/userAction";
 // React Icons
 import { CiLogout } from "react-icons/ci";
 import { CgProfile } from "react-icons/cg";
-import { HiOutlineHome, HiUser, HiOutlineClipboardList } from "react-icons/hi";
+import { HiHome, HiOutlineClipboardList,HiOutlineUserCircle } from "react-icons/hi";
+// import {FaUser} from "react-icons/fa";
 import {
   MdShoppingCart,
   MdKeyboardArrowDown,
@@ -110,7 +111,7 @@ const Header = () => {
                 ) : (
                   ""
                 )}
-                <Link to="/user/account">
+                <Link to="/user/account#user-account">
                   <CgProfile /> Your profile
                 </Link>
                 <Link onClick={userLogout}>
@@ -132,20 +133,24 @@ const Header = () => {
           </Link>
         </div>
         <div className="mobile-footer-nav">
-          <Link to={"/"}>
-            <HiOutlineHome />
+          <Link to={"/#main-home"}>
+            <HiHome />
+            <span>Home</span>
           </Link>
-          <Link to={"/user/login"}>
-            <HiUser />
+          <Link to={isAuthenticated?"/user/account#user-account":"/user/login"}>
+            <HiOutlineUserCircle />
+            <span>Account</span>
           </Link>
-          <Link to={"/mycart"}>
+          <Link to={"/mycart#my-cart"}>
             <MdShoppingCart />
             <sup className="text-danger">
               {cartItems ? cartItems.length : 0}
             </sup>
+            <span>Cart</span>
           </Link>
-          <Link to={"/order"}>
+          <Link to={"/orders#my-order"}>
             <HiOutlineClipboardList />
+            <span>Order</span>
           </Link>
         </div>
       </div>

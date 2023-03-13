@@ -1,7 +1,7 @@
 .card-box {
   width: 235px;
   height: max-content;
-  border: 1px solid #e9eaec;
+  border: 1px solid #cbcccf;
   background-color: #fff;
   /* margin: auto; */
   margin-bottom: 10px;
@@ -223,6 +223,9 @@ input[type="number"] {
   margin-top: 10px;
 }
 @media (max-width: 576px) {
+  .product-heading{
+    font-size: 1.5rem;
+  }
   .flex-gap {
     grid-gap: 1vmax;
     gap: 1vmax;
@@ -232,12 +235,42 @@ input[type="number"] {
     justify-content: center;
   }
   .card-box {
-    width: 280px;
+    width: 150px;
+  }
+  .card-box .card-image {
+    height: 80px;
+  }
+  .card-description h2{
+    font-size: 12px;
+  }
+  .ratings{
+    margin-top: 4px;
+  }
+  .card-description > span{
+    font-size: 18px;
+  }
+  .ratings span{
+    font-size: 10px !important;
+  }
+  .card-inner-box {
+    padding: 10px;
   }
   .main-banner {
     height: auto !important;
   }
   .bg-product {
     padding: 20px;
+  }
+  .single-product .product-img {
+    height: 400px;
+  }
+  .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+    bottom: 0px !important;
+  }
+  .product-desc-details h1{
+    margin-top: 1rem;
+  }
+  .product-price{
+    margin-top: 1rem;
   }
 }
