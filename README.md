@@ -1,14 +1,20 @@
-# themenhood
-A Fulll-Satck ecommerce web application in MERN stack
+# TheMenHood
+TheMenHood is complete Full-Satck ecommerce web application built in MERN stack.
+<h4>Demo Link : https://themenhood.netlify.app/</h4>
+<br>
 <div>
   <img src="https://res.cloudinary.com/dbihgswg7/image/upload/v1672905072/logo/bb-logo-1_1_y72x1k.svg"/>
 </div>
 </br>
-
-<h4>API of this application is live at: https://themenhood.onrender.com/api/v1/</h4>
-<h4>This Web Application is Live at : https://themenhood.netlify.app/</h4>
+<h4>Live API Link: https://themenhood.onrender.com/api/v1/</h4>
 <hr>
-</br>
+<h3>Example - Get All Products</h3>
+<p>GET Request => https://themenhood.onrender.com/api/v1/products</p>
+<pre>
+https://themenhood.onrender.com/api/v1/products
+</pre>
+
+
 <a href="https://render.com/deploy?repo=https://github.com/surajaswal29/themenhood">
   <img src="https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white" alt="Deploy to Render">
 </a>
