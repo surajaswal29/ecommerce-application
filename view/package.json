@@ -1,0 +1,51 @@
+{
+  "name": "view",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/icons-material": "^5.11.11",
+    "@mui/material": "^5.11.11",
+    "@stripe/react-stripe-js": "^1.16.5",
+    "@stripe/stripe-js": "^1.48.0",
+    "axios": "^1.2.1",
+    "bootstrap": "^5.2.3",
+    "country-state-city": "^3.1.2",
+    "overlay-navbar": "^1.2.3",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.7.0",
+    "react-dom": "^18.2.0",
+    "react-favicon": "^1.0.1",
+    "react-helmet": "^6.1.0",
+    "react-icons": "^4.7.1",
+    "react-js-pagination": "^3.0.3",
+    "react-payment-inputs": "^1.1.9",
+    "react-rating-stars-component": "^2.2.0",
+    "react-redux": "^8.0.5",
+    "react-router": "^6.6.0",
+    "react-router-dom": "^6.6.0",
+    "redux": "^4.2.0",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.2",
+    "styled-components": "^5.0.0",
+    "swiper": "^8.4.7"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "vite": "^5.2.0"
+  }
+}

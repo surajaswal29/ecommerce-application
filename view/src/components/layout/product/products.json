@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Sample Footwear 1",
+    "description": "This is a sample footwear product description.",
+    "price": 49.99,
+    "ratings": 4.5,
+    "images": [
+      {
+        "public_id": "footwear/1_xcrzch",
+        "url": "https://res.cloudinary.com/dzfc0ty7q/image/upload/v1713977569/ecommerce/jxgsyybujyfj20oo9des.jpg"
+      }
+    ],
+    "category": "Footwear",
+    "stock": 50,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Sample Bottomwear 1",
+    "description": "This is a sample bottomwear product description.",
+    "price": 29.99,
+    "ratings": 4.2,
+    "images": [
+      {
+        "public_id": "bottomwear/1_xcrzch",
+        "url": "https://res.cloudinary.com/dzfc0ty7q/image/upload/v1713977334/ecommerce/nribubvxhqttcaaawwv8.jpg"
+      }
+    ],
+    "category": "Bottomwear",
+    "stock": 30,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Sample Topwear 1",
+    "description": "This is a sample topwear product description.",
+    "price": 39.99,
+    "ratings": 4.8,
+    "images": [
+      {
+        "public_id": "topwear/1_xcrzch",
+        "url": "https://res.cloudinary.com/dzfc0ty7q/image/upload/v1713978006/61XuejE6VDL._UL1440__jtp44q.jpg"
+      }
+    ],
+    "category": "Topwear",
+    "stock": 20,
+    "numOfReviews": 0,
+    "reviews": []
+  },
+  {
+    "name": "Sample Sunglasses 1",
+    "description": "This is a sample sunglasses product description.",
+    "price": 19.99,
+    "ratings": 4.0,
+    "images": [
+      {
+        "public_id": "sunglasses/1_xcrzch",
+        "url": "https://res.cloudinary.com/dzfc0ty7q/image/upload/v1713977947/41EAjgnLJ2S._SL1200__qcwtcr.jpg"
+      }
+    ],
+    "category": "Accessories",
+    "stock": 40,
+    "numOfReviews": 0,
+    "reviews": []
+  }
+]
