@@ -1,18 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 // React Router
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-// import Axios
-import axios from "axios";
-
 // Redux imports
 import { useDispatch } from "react-redux";
 import { loadUser } from "./actions/userAction";
-
-// Stripe
-import { loadStripe } from '@stripe/stripe-js';
-import { Elements } from '@stripe/react-stripe-js';
 
 // components imports
 import Home from "./components/layout/Home/Home";
@@ -27,11 +20,7 @@ import Account from "./components/layout/user/account.jsx";
 import ProtectedRoute from "./components/Route/ProtectedRoute.jsx";
 import Shipping from "./components/layout/cart/Shipping.jsx";
 import ConfirmOrder from "./components/layout/cart/ConfirmOrder";
-import OrderPayment from "./components/layout/cart/OrderPayment";
 import PaymentSuccess from "./components/layout/cart/PaymentSuccess";
-// import StripeRoute from "./components/Route/StripeRoute";
-
-import { MAIN_URI } from "./service/helper";
 
 // import bootstrap and css file
 import "bootstrap/dist/css/bootstrap.min.css";

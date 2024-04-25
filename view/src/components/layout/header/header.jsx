@@ -102,16 +102,9 @@ const Header = () => {
               }}
             >
               Hello,{" "}
-              <span className="user-name-color">{user.name.split(" ")[0]}</span>{" "}
+              <span className="user-name-color">{user?.name?.split(" ")[0]}</span>{" "}
               <MdKeyboardArrowDown />
               <div className={userProfile === 1 ? "cat-dropdown" : "hide"}>
-                {user.role === "admin" ? (
-                  <Link to={"/dashboard/"}>
-                    <MdDashboardCustomize /> Dashboard
-                  </Link>
-                ) : (
-                  ""
-                )}
                 <Link to="/user/account#user-account">
                   <CgProfile /> Your profile
                 </Link>

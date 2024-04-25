@@ -35,12 +35,10 @@ app.use(fileUpload())
 const product = require("./routes/productRoute")
 const user = require("./routes/userRoute")
 const order = require("./routes/orderRoute")
-const payment = require("./routes/paymentRoute")
 
 app.use("/api/v1/product", product)
 app.use("/api/v1/user", user)
 app.use("/api/v1/order", order)
-app.use("/api/v1/payment", payment)
 
 app.use(express.static(path.join(__dirname, "./view")))
 app.get("*", (req, res) => {
