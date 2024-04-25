@@ -42,9 +42,9 @@ app.use("/api/v1/user", user)
 app.use("/api/v1/order", order)
 app.use("/api/v1/payment", payment)
 
-app.use(express.static(path.join(__dirname, "../view/dist")))
+app.use(express.static(path.join(__dirname, "./view")))
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../view/dist/index.html"))
+  res.sendFile(path.resolve(__dirname, "./view/index.html"))
 })
 
 // Middleware for Error
