@@ -1,8 +1,8 @@
 // Localhost URI
 export const MAIN_URI =
-  window.location.hostname === "localhost"
+  import.meta.env.DEV && window.location.hostname === "localhost"
     ? "http://localhost:4000"
-    : "https://themenhood.onrender.com";
+    : "https://ecommerce-app-i3h2.onrender.com";
 
 // Production URI
-export const FRONT_MAIN_URI = "https://themenhood.netlify.com";
+export const FRONT_MAIN_URI = "https://ecommerce-app-i3h2.onrender.com";

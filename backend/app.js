@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser")
 const bodyParser = require("body-parser")
 const dotenv = require("dotenv")
 const cors = require("cors")
+const path = require("path")
 
 // config
 dotenv.config({ path: "backend/config/.env" })
@@ -34,12 +35,15 @@ app.use(fileUpload())
 const product = require("./routes/productRoute")
 const user = require("./routes/userRoute")
 const order = require("./routes/orderRoute")
-const payment = require("./routes/paymentRoute")
 
 app.use("/api/v1/product", product)
 app.use("/api/v1/user", user)
 app.use("/api/v1/order", order)
-app.use("/api/v1/payment", payment)
+
+app.use(express.static(path.join(__dirname, "./view")))
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./view/index.html"))
+})
 
 // Middleware for Error
 app.use(errorMiddleware)
