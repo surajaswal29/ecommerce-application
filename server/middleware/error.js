@@ -12,6 +12,7 @@ module.exports = (err, req, res, next) => {
   }
 
   console.log(`Error Middleware: ${err}`)
+  
 
   res.status(err.statusCode).json({
     success: false,

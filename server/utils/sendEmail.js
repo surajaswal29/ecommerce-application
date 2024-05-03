@@ -1,24 +1,79 @@
-const nodeMailer = require("nodemailer");
+const nodemailer = require("nodemailer")
+const {
+  EMAIL_VERIFICATION_SUBJECT,
+  OTP_EMAIL_TEMPLATE,
+  GENERATE_OTP,
+  PASSWORD_RESET_SUBJECT,
+  PASSWORD_RESET_EMAIL_TEMPLATE,
+} = require("./constants")
 
-const sendEmail = async (options) => {
-  const transporter = nodeMailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: process.env.SMTP_PORT,
-    service: process.env.SMTP_SERVICE,
+const createTransporter = () => {
+  return nodemailer.createTransport({
+    service: "Gmail",
+    host: process.env.MAIL_HOST || "smtp.gmail.com", // Provide default values if environment variables are not set
+    port: parseInt(process.env.MAIL_PORT || 465), // Ensure port is parsed as an integer
+    secure: true,
     auth: {
-      user: process.env.SMTP_EMAIL,
-      pass: process.env.SMTP_PASSWORD,
+      user: process.env.GOOGLE_EMAIL_ID,
+      pass: process.env.APP_PASSWORD,
     },
-  });
+  })
+}
 
-  const mailOptions = {
-    from: process.env.SMTP_EMAIL,
-    to: options.email,
-    subject: options.subject,
-    text: options.message,
-  };
+exports.email_verification_mail = async (data) => {
+  try {
+    console.log({
+      user: process.env.GOOGLE_EMAIL_ID,
+      pass: process.env.APP_PASSWORD,
+    })
+    const transporter = createTransporter() // Create transporter instance
+    console.log(transporter)
+    await transporter.verify() // Verify transporter
+    console.log("Ready for sending email")
+    console.log(data)
 
-  await transporter.sendMail(mailOptions);
-};
+    const info = await transporter.sendMail({
+      from: `"Shopio" <${process.env.GOOGLE_EMAIL_ID || ""}>`,
+      to: data?.to || "",
+      subject: EMAIL_VERIFICATION_SUBJECT,
+      html: OTP_EMAIL_TEMPLATE({
+        bgImage: null,
+        appLogo: null,
+        userName: data?.html?.userName,
+        otp: data?.html?.otp,
+      }),
+    })
 
-module.exports = sendEmail;
+    // Send email
+    console.log("Email sent:", info)
+    return true
+  } catch (error) {
+    console.error("Error sending email:", error)
+    return false
+  }
+}
+
+exports.password_reset_mail = async (data) => {
+  try {
+    const transporter = createTransporter() // Create transporter instance
+    await transporter.verify() // Verify transporter
+
+    const info = await transporter.sendMail({
+      from: `"Shopio" <${process.env.GOOGLE_EMAIL_ID || ""}>`,
+      to: data?.to || "",
+      subject: PASSWORD_RESET_SUBJECT,
+      html: PASSWORD_RESET_EMAIL_TEMPLATE({
+        bgImage: null,
+        userName: data?.html?.userName,
+        resetLink: data?.html?.resetLink,
+      }),
+    })
+
+    // Send email
+    console.log("Email sent:", info)
+    return true
+  } catch (error) {
+    console.error("Error sending email:", error)
+    return false
+  }
+}

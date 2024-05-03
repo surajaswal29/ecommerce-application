@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./user.css";
-import Logo from "../../images/bb-logo-1.svg";
+// import Logo from "../../images/bb-logo-1.svg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -52,7 +52,7 @@ const Login = () => {
             <div className="row">
               <div className="col-md-12 d-flex justify-content-center">
                 <Link to={"/"} className="login-logo">
-                  <img src={Logo} alt="The Men Hood Logo" />
+                  <img src={"/shopio_logo.png"} alt="The Men Hood Logo" />
                 </Link>
               </div>
               <div className="col-md-12 d-flex justify-content-center">
@@ -63,7 +63,7 @@ const Login = () => {
                   <form onSubmit={loginSubmit}>
                     <div className="row">
                       <div className="col-md-12">
-                        <label htmlFor="uname-email">Email address</label>
+                        <label htmlFor="uname-email">Email</label>
                         <br />
                         <input
                           type="email"

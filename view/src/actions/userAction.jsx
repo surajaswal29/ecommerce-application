@@ -52,8 +52,8 @@ export const userRegister = (userData) => async (dispatch) => {
     });
 
     const config = {
-      headers: { "Content-Type": "multipart/form-data" }
-    };
+      headers: { "Content-Type": "application/json" }
+    }
     //console.log(userData);
     const { data } = await axios.post(
       `${MAIN_URI}/api/v1/user/register`,
@@ -61,11 +61,14 @@ export const userRegister = (userData) => async (dispatch) => {
       config
     );
 
+    console.log(data);
+
     dispatch({ type: REGISTER_USER_SUCCESS, payload: data.user });
   } catch (error) {
+    console.log(error.response.data.error);
     dispatch({
       type: REGISTER_USER_FAIL,
-      payload: "Server Error",
+      payload: error.response.data.error,
     });
   }
 };

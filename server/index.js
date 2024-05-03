@@ -11,10 +11,11 @@ const Razorpay = require("razorpay")
 const connectDB = require("./config/database")
 const errorHandler = require("./middleware/error")
 const helmet = require("helmet")
+const compression = require("compression")
 
 const app = express()
 
-const PORT = process.env.PORT || 4000
+const PORT = process.env.PORT || 8000
 
 // config
 dotenv.config({
@@ -32,19 +33,31 @@ process.on("uncaughtException", (err) => {
 // CORS
 app.use(
   cors({
-    origin: "*",
+    origin: ["http://localhost:5173"],
+    credentials: true,
   })
 )
 
 // Database
 connectDB()
 
+app.use(
+  compression({
+    level: 6,
+    threshold: 0,
+    filter: (req, res) => {
+      if (req.headers["x-no-compression"]) {
+        return false
+      }
+      return compression.filter(req, res)
+    },
+  })
+)
+app.use(morgan("combined"))
+app.use(helmet())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
-app.use(morgan("combined"))
-app.use(helmet())
-// use routes
 
 // cloudinary init
 cloudinary.config({
