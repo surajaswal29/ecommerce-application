@@ -60,18 +60,22 @@ const userSchema = new mongoose.Schema(
         city: {
           type: String,
           default: "",
+          required: true,
         },
         state: {
           type: String,
           default: "",
+          required: true,
         },
         country: {
           type: String,
           default: "",
+          required: true,
         },
         zipCode: {
           type: String,
           default: "",
+          required: true,
         },
         address: {
           type: String,

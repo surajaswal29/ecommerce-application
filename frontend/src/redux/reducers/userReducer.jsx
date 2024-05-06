@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { registerUser, verifyOtp, resendOtp, loginUser, getUserInfo, logoutUser } from "../actions/userActions"
+import { registerUser, verifyOtp, resendOtp, loginUser, getUserInfo, logoutUser, addUserAddress, deleteUserAddress } from "../actions/userActions"
 
 const initialState = {
     loading: false,
@@ -11,6 +11,8 @@ const initialState = {
     isOTPResent: false,
     message: null,
     isAuthenticated: false,
+    isUserAddressAdded: false,
+    isUserAddressDelete: false
 }
 
 const userSlice = createSlice({
@@ -20,7 +22,9 @@ const userSlice = createSlice({
         clearUserError: (state) => {
             return {
                 ...state,
-                error: null
+                error: null,
+                isUserAddressAdded: false,
+                isUserAddressDelete: false
             }
         }
     },
@@ -175,6 +179,57 @@ const userSlice = createSlice({
             }
         })
 
+        // add user address
+        builder.addCase(addUserAddress.pending, (state) => {
+            return {
+                ...state,
+                loading: true,
+            }
+        })
+        builder.addCase(addUserAddress.fulfilled, (state, action) => {
+            return {
+                ...state,
+                loading: false,
+                error: null,
+                message: action.payload,
+                isUserAddressAdded: true
+            }
+        })
+        builder.addCase(addUserAddress.rejected, (state, action) => {
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
+                isUserAddressAdded: false,
+                message: null
+            }
+        })
+
+        // user delete address
+        builder.addCase(deleteUserAddress.pending, (state) => {
+            return {
+                ...state,
+                loading: true,
+            }
+        })
+        builder.addCase(deleteUserAddress.fulfilled, (state, action) => {
+            return {
+                ...state,
+                loading: false,
+                error: null,
+                message: action.payload,
+                isUserAddressDelete: true
+            }
+        })
+        builder.addCase(deleteUserAddress.rejected, (state, action) => {
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
+                isUserAddressDelete: false,
+                message: null
+            }
+        })
     },
 });
 

@@ -173,8 +173,8 @@ exports.loginUser = catchAsyncError(async (req, res, next) => {
       Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
-    sameSite: process.env.NODE_ENV === 'development' ? true : "none",
-    secure: !process.env.NODE_ENV === 'development',
+    sameSite: process.env.NODE_ENV === "development" ? true : "none",
+    secure: !process.env.NODE_ENV === "development",
   }
 
   return res.status(200).cookie("shopio_token", jwtToken, options).json({
@@ -385,6 +385,26 @@ exports.updateUserAddress = catchAsyncError(async (req, res, next) => {
         400
       )
     )
+  }
+
+  if (!req.query.addressId) {
+    const missingKey = keyAllowed.filter(
+      (key) => key !== "label" && key !== "priority"
+    )
+    if (
+      !req.body.city ||
+      !req.body.state ||
+      !req.body.country ||
+      !req.body.zipCode ||
+      !req.body.address
+    ) {
+      return next(
+        new ErrorHandler(
+          `Missing key: Required keys are: ${missingKey.join(", ")}`,
+          400
+        )
+      )
+    }
   }
 
   if (req.query.addressId) {

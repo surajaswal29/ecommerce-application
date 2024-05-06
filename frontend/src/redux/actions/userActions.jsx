@@ -1,6 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
-import { decryptData } from "../../utils/utility"
 
 export const registerUser = createAsyncThunk(
     "user/register",
@@ -144,6 +143,59 @@ export const logoutUser = createAsyncThunk(
 
             const { data } = await axios(
                 `${import.meta.env.VITE_API_URI}/user/logout`,
+                config
+            )
+
+            return data.message
+        } catch (error) {
+            console.log(error)
+            return rejectWithValue(error.response.data.error)
+        }
+    }
+)
+
+export const addUserAddress = createAsyncThunk(
+    "user/addUserAddress",
+    async (body, { rejectWithValue }) => {
+        try {
+            const config = {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                data: JSON.stringify(body),
+                method: "POST",
+                credentials: "include",
+                withCredentials: true,
+            }
+
+            const { data } = await axios(
+                `${import.meta.env.VITE_API_URI}/user/add_user_address`,
+                config
+            )
+
+            return data.message
+        } catch (error) {
+            console.log(error)
+            return rejectWithValue(error.response.data.error)
+        }
+    }
+)
+
+export const deleteUserAddress = createAsyncThunk(
+    "user/deleteUserAddress",
+    async (id, { rejectWithValue }) => {
+        try {
+            const config = {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                method: "DELETE",
+                credentials: "include",
+                withCredentials: true,
+            }
+
+            const { data } = await axios(
+                `${import.meta.env.VITE_API_URI}/user/delete_user_address/${id}`,
                 config
             )
 
