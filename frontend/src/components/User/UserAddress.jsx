@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect } from "react"
-import { Building, Delete, Home, Map, PlusCircle, Trash } from "lucide-react"
+import { Building, Home, Map, PlusCircle, Trash } from "lucide-react"
 import Modal from "../../components/Modal"
 import { useDispatch, useSelector } from "react-redux"
 import {

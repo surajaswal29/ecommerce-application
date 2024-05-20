@@ -2,15 +2,20 @@
   "name": "ecommerce",
   "version": "1.0.0",
   "description": "An ecommerce website.",
-  "main": "index.js",
+  "main": "server/index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/index.js",
-    "dev": "nodemon server/index.js"
+    "dev": "ts-node-dev --respawn --transpile-only server/index.ts",
+    "build": "tsc"
   },
   "author": "Suraj Aswal",
   "license": "ISC",
   "dependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/multer": "^1.4.11",
+    "@types/nodemailer": "^6.4.15",
+    "@types/validator": "^13.11.10",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.33.0",
     "compression": "^1.7.4",
@@ -27,5 +32,16 @@
     "nodemailer": "^6.8.0",
     "razorpay": "^2.9.3",
     "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "@types/compression": "^1.7.5",
+    "@types/cookie-parser": "^1.4.7",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/mongoose": "^5.11.97",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^20.12.12",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.4.5"
   }
 }

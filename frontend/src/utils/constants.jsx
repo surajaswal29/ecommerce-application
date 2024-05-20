@@ -115,11 +115,43 @@ export const productData = [
         ]
     },
     {
-        title: "Arjun Plant",
-        price: 29.99, // Insert actual price here
-        images: [
+        "title": "Arjun Plant",
+        "price": 29.99,
+        "images": [
             "https://res.cloudinary.com/dzfc0ty7q/image/upload/v1714765590/green-app/outdoor/arjun/arjun_2_advlfd.webp",
             "https://res.cloudinary.com/dzfc0ty7q/image/upload/v1714765584/green-app/outdoor/arjun/arjun_1_ay2djo.webp"
+        ]
+    },
+    {
+        "title": "Sunflower",
+        "price": 19.99,
+        "images": [
+            "https://res.cloudinary.com/dzfc0ty7q/image/upload/v1715139433/green-app/flowers/Sunflower_2_ftleel.webp",
+            "https://res.cloudinary.com/dzfc0ty7q/image/upload/v1715139432/green-app/flowers/marigold_2_quu8hx.webp"
+        ]
+    },
+    {
+        "title": "Marigold",
+        "price": 15.99,
+        "images": [
+            "https://res.cloudinary.com/dzfc0ty7q/image/upload/v1715139433/green-app/flowers/marigold_1_wdukow.webp",
+            "https://res.cloudinary.com/dzfc0ty7q/image/upload/v1715139432/green-app/flowers/marigold_2_quu8hx.webp"
+        ]
+    },
+    {
+        "title": "Jasmine",
+        "price": 25.99,
+        "images": [
+            "https://res.cloudinary.com/dzfc0ty7q/image/upload/v1715139432/green-app/flowers/Jasmine_2_dv2t7v.webp",
+            "https://res.cloudinary.com/dzfc0ty7q/image/upload/v1715139432/green-app/flowers/Jasmine_1_vpcmhw.webp"
+        ]
+    },
+    {
+        "title": "Rhododendron",
+        "price": 34.99,
+        "images": [
+            "https://res.cloudinary.com/dzfc0ty7q/image/upload/v1715139432/green-app/flowers/Rhododendron_1_lujxep.webp",
+            "https://res.cloudinary.com/dzfc0ty7q/image/upload/v1715139432/green-app/flowers/Rhododendron_2_rlmyx1.webp"
         ]
     }
 ];

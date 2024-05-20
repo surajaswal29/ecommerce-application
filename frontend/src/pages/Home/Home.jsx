@@ -117,7 +117,7 @@ const Home = () => {
           {productData.filter((i, index) => index < 8).map((item) => (
             <div
               key={item.title}
-              className='w-full bg-gray-50 shadow rounded-lg mb-4 cursor-pointer hover:shadow-lg hover:scale-105 ease-in-out duration-200'
+              className='w-full bg-gray-50 shadow rounded-lg mb-4 cursor-pointer hover:shadow-lg ease-in-out duration-200'
             >
               <div className='w-full h-[300px] p-3 relative'>
                 <img

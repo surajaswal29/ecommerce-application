@@ -2,6 +2,7 @@ import { Calendar, Edit, Mail, Phone, UserRound } from "lucide-react"
 import React from "react"
 import { useSelector } from "react-redux"
 import UserAddress from "../../components/User/UserAddress"
+import MyOrder from "../../components/Order/MyOrder"
 
 const Profile = () => {
   const { user } = useSelector((state) => state.user)
@@ -28,16 +29,16 @@ const Profile = () => {
               <h1 className='text-2xl font-medium mt-4 text-black'>
                 {user?.name}
               </h1>
-              <p>{user?.bio || "Shopio user"}</p>
+              <p>{user?.email}</p>
               <div className='w-full text-left mt-3'>
-                <h1 className='border p-2 rounded-lg text-black font-semibold border-blue-400 bg-blue-200 flex items-center justify-between'>
+                <h1 className='border p-2 rounded-md text-black font-semibold border-slate-300 bg-slate-200/60 flex items-center justify-between'>
                   My Info{" "}
                   <span className='cursor-pointer font-bold text-blue-900'>
                     <Edit size={16} />
                   </span>
                 </h1>
                 <p className='p-2 flex gap-2 items-center'>
-                  <Mail size={16} /> {user?.email}
+                  <Mail size={16} /> {user?.bio || "Shopio user"}
                 </p>
                 <p className='p-2 flex gap-2 items-center'>
                   <Phone size={16} /> {user?.phone ? user?.phone : "N/A"}
@@ -74,47 +75,7 @@ const Profile = () => {
           </div>
           <div className='w-8/12 bg-white rounded-lg shadow-md p-4'>
             <UserAddress />
-            <div className='w-full border rounded-md p-3 mt-6'>
-              <h1 className='font-semibold'>My Orders</h1>
-
-              <div className='w-full'>
-                <div className='w-full bg-slate-100 border p-2 rounded-md mt-2 text-sm shadow'>
-                  <p>Address Line 1</p>
-                  <p>Address Line 2</p>
-                  <p>City</p>
-                  <p>State</p>
-                  <p>Zip Code</p>
-                </div>
-                <div className='w-full bg-slate-100 border p-2 rounded-md mt-2 text-sm shadow'>
-                  <p>Address Line 1</p>
-                  <p>Address Line 2</p>
-                  <p>City</p>
-                  <p>State</p>
-                  <p>Zip Code</p>
-                </div>
-                <div className='w-full bg-slate-100 border p-2 rounded-md mt-2 text-sm shadow'>
-                  <p>Address Line 1</p>
-                  <p>Address Line 2</p>
-                  <p>City</p>
-                  <p>State</p>
-                  <p>Zip Code</p>
-                </div>
-                <div className='w-full bg-slate-100 border p-2 rounded-md mt-2 text-sm shadow'>
-                  <p>Address Line 1</p>
-                  <p>Address Line 2</p>
-                  <p>City</p>
-                  <p>State</p>
-                  <p>Zip Code</p>
-                </div>
-                <div className='w-full bg-slate-100 border p-2 rounded-md mt-2 text-sm shadow'>
-                  <p>Address Line 1</p>
-                  <p>Address Line 2</p>
-                  <p>City</p>
-                  <p>State</p>
-                  <p>Zip Code</p>
-                </div>
-              </div>
-            </div>
+            <MyOrder />
           </div>
         </div>
       )}
