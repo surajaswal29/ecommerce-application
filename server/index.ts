@@ -20,9 +20,7 @@ try {
   const PORT: number = parseInt(process.env.PORT!) || 8000;
 
   // config
-  dotenv.config({
-    path: path.resolve(__dirname, './config/.env'),
-  });
+  dotenv.config();
 
   // handling uncaught exception
   process.on('uncaughtException', (err: Error) => {

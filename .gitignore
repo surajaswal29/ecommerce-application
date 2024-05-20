@@ -1,5 +1,5 @@
 /video
 /node_modules
 /frontend/node_modules
-/server/config/.env
+/server/.env
 .vscode
