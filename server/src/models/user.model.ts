@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document, Model } from 'mongoose';
+import mongoose, { Schema, Model } from 'mongoose';
 import validator from 'validator';
 import bcrypt from 'bcryptjs';
 import JWT from 'jsonwebtoken';
@@ -20,8 +20,7 @@ const userSchema = new Schema<Types.IUserDocument>(
     phone: {
       type: String,
       validate: {
-        validator: (value: string) =>
-          !value || validator.isMobilePhone(value, 'en-IN'),
+        validator: (value: string) => !value || validator.isMobilePhone(value, 'en-IN'),
         message: 'Please enter a valid phone number',
       },
       default: null,
@@ -33,8 +32,7 @@ const userSchema = new Schema<Types.IUserDocument>(
     gender: {
       type: String,
       validate: {
-        validator: (value: string) =>
-          !value || ['male', 'female', 'other'].includes(value),
+        validator: (value: string) => !value || ['male', 'female', 'other'].includes(value),
         message: 'Please enter a valid gender',
       },
       default: null,
@@ -53,8 +51,7 @@ const userSchema = new Schema<Types.IUserDocument>(
         label: {
           type: String,
           validate: {
-            validator: (value: string) =>
-              ['home', 'office', 'other'].includes(value),
+            validator: (value: string) => ['home', 'office', 'other'].includes(value),
             message: 'Please enter a valid label',
           },
           default: 'home',
@@ -86,8 +83,7 @@ const userSchema = new Schema<Types.IUserDocument>(
         priority: {
           type: String,
           validate: {
-            validator: (value: string) =>
-              ['primary', 'secondary'].includes(value),
+            validator: (value: string) => ['primary', 'secondary'].includes(value),
             message: 'Please enter a valid priority',
           },
           default: 'primary',
@@ -133,8 +129,8 @@ userSchema.pre<Types.IUserDocument>('save', async function (next) {
 
   this.password = await bcrypt.hash(this.password, 10);
   this.avatar =
-    Constant.USER_DEFAULT_AVATAR.find((item) => item.gender === this.gender)
-      ?.avatar || Constant.USER_DEFAULT_AVATAR[0].avatar;
+    Constant.USER_DEFAULT_AVATAR.find((item) => item.gender === this.gender)?.avatar ||
+    Constant.USER_DEFAULT_AVATAR[0].avatar;
   next();
 });
 
@@ -146,16 +142,10 @@ userSchema.methods.getJWTToken = function (): string {
 };
 
 // Compare password
-userSchema.methods.comparePassword = function (
-  enteredPassword: string
-): Promise<boolean> {
+userSchema.methods.comparePassword = function (enteredPassword: string): Promise<boolean> {
   return bcrypt.compare(enteredPassword, this.password);
 };
 
-const User: Model<Types.IUserDocument> = mongoose.model<Types.IUserDocument>(
-  'User',
-  userSchema,
-  'users'
-);
+const User: Model<Types.IUserDocument> = mongoose.model<Types.IUserDocument>('User', userSchema, 'users');
 
 export default User;
