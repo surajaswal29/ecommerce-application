@@ -43,7 +43,7 @@ export interface ICart extends Document {
 
 export interface IOrder extends Document {
   shipping_address: ObjectId;
-  user: ObjectId;
+  user_id: ObjectId;
   order_status: string;
   payment_status: string;
   delivery_status: string;
@@ -52,7 +52,24 @@ export interface IOrder extends Document {
 }
 
 export interface IOrderItem extends Document {
+  order_id: ObjectId;
   quantity: number;
   total_price: number;
-  product: ObjectId;
+  product_id: ObjectId;
+}
+
+export interface ICheckValidBody {
+  isValid: boolean;
+  key: string | null;
+}
+
+export interface IUserAddress extends Document {
+  user_id: ObjectId;
+  label: string;
+  city: string;
+  state: string;
+  country: string;
+  zip_code: number;
+  address: string;
+  priority: string;
 }

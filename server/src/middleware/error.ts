@@ -1,24 +1,35 @@
 import { Request, Response, NextFunction } from 'express';
 import { Types, ErrorHandler } from '../utils';
+import { Error } from 'mongoose';
 
-const errorMiddleware = (
-  err: Types.IErrorHandler,
-  req: Request,
-  res: Response,
-  next: NextFunction
-): void => {
-  err.statusCode = err.statusCode || 500;
-  err.message = err.message || 'Internal server error';
+const errorMiddleware = (err: Types.IErrorHandler, req: Request, res: Response, next: NextFunction) => {
+  /*
+  // Handle Mongoose Validation Error
+  if (err instanceof Error.ValidationError) {
+    const errorMessage = Object.values(err.errors).map((error) => {
+      if (error instanceof Error.CastError) {
+        return `Invalid value for ${error?.path}: ${error?.value}. Please provide a valid ${error?.kind}.`;
+      }
+      return [err.message];
+    })[0];
 
-  // wrong mongodb error
-  if (err.name === 'CastError') {
-    const message = `Mongo DB Error: Resource not found. Invalid: ${err.path}`;
-    err = new ErrorHandler(message, 400);
+    return res.status(400).json({
+      success: false,
+      error: errorMessage,
+      e: err,
+    });
   }
 
-  console.log(`Error Middleware: ${err}`);
-
-  res.status(err.statusCode || 500).json({
+  // Handle Mongoose Cast Error (e.g., invalid ObjectId)
+  if (err instanceof Error.CastError) {
+    return res.status(400).json({
+      success: false,
+      error: 'Invalid ID Format',
+      message: `Invalid ${err.path}: ${err.value}. Please provide a valid ObjectId.`,
+    });
+  }
+  */
+  return res.status(err.statusCode || 500).json({
     success: false,
     error: err.message || 'Something went wrong',
   });

@@ -80,7 +80,8 @@ app.use('/api/v1', rootRoute);
 app.use(errorHandler);
 
 const server = app.listen(PORT, () => {
-  console.log(`Server started at Port ${PORT}`);
+  console.log(`Server successfully started on Port ${PORT}`);
+  console.log(`http://localhost:${PORT}`);
 });
 
 // unhandled promise rejection

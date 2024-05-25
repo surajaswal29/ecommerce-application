@@ -19,7 +19,7 @@ export default (): void => {
   mongoose
     .connect(dbUrl, options)
     .then(() => {
-      console.log('Connected with database');
+      console.log('Connection to the database established.');
     })
     .catch((error: Error) => {
       console.log(error);

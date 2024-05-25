@@ -1,7 +1,6 @@
 import crypto from 'crypto';
-
-export const EMAIL_VERIFICATION_SUBJECT =
-  'Your OTP for Email Verification - Shopio';
+import { Interfaces } from '../utils';
+export const EMAIL_VERIFICATION_SUBJECT = 'Your OTP for Email Verification - Shopio';
 
 export const PASSWORD_RESET_SUBJECT = 'Password reset verification - Shopio';
 
@@ -44,9 +43,7 @@ export const OTP_EMAIL_TEMPLATE = (data: any) =>
                     <td bgcolor="#ffffff" class="content" style="padding: 40px;">
                         <p style="font-size: 16px;">Hello ${data.userName},</p>
                         <p style="font-size: 16px;">Your One-Time Password (OTP) for email verification is:</p>
-                        <p style="font-size: 24px; font-weight: bold; text-align: center;">${
-                          data?.otp
-                        }</p>
+                        <p style="font-size: 24px; font-weight: bold; text-align: center;">${data?.otp}</p>
                         <p style="font-size: 16px;">Please use this OTP to verify your email address. It will expire in 10 minutes.</p>
                         <p style="font-size: 16px;">If you did not request this OTP or have any concerns, please ignore this email.</p>
                         <p style="font-size: 16px;">Thank you,</p>
@@ -127,29 +124,24 @@ export const GENERATE_OTP = async (): Promise<number> => {
 export const USER_DEFAULT_AVATAR = [
   {
     gender: 'male',
-    avatar:
-      'https://res.cloudinary.com/dzfc0ty7q/image/upload/v1714272765/avatars/Web3_Avatar-19_cinvzc.svg',
+    avatar: 'https://res.cloudinary.com/dzfc0ty7q/image/upload/v1714272765/avatars/Web3_Avatar-19_cinvzc.svg',
   },
   {
     gender: 'female',
-    avatar:
-      'https://res.cloudinary.com/dzfc0ty7q/image/upload/v1714272765/avatars/Web3_Avatar-17_mub2x1.svg',
+    avatar: 'https://res.cloudinary.com/dzfc0ty7q/image/upload/v1714272765/avatars/Web3_Avatar-17_mub2x1.svg',
   },
   {
     gender: 'other',
-    avatar:
-      'https://res.cloudinary.com/dzfc0ty7q/image/upload/v1714272548/avatars/Web3_Avatar-2_zpkkix.svg',
+    avatar: 'https://res.cloudinary.com/dzfc0ty7q/image/upload/v1714272548/avatars/Web3_Avatar-2_zpkkix.svg',
   },
 ];
 
-export const resetPasswordToken = async () =>
-  crypto.randomBytes(16).toString('hex');
+export const resetPasswordToken = async () => crypto.randomBytes(16).toString('hex');
 
-export const generateHash = async (data: any) =>
-  crypto.createHash('sha256').update(data).digest('hex');
+export const generateHash = async (data: any) => crypto.createHash('sha256').update(data).digest('hex');
 
-export const checkValidKey = (keyData: any, bodyData: any) => {
-  const bodyDataKeys = Object.keys(bodyData);
+export const checkValidKey = <T extends string>(keyData: T[], bodyData: Record<T, any>): Interfaces.ICheckValidBody => {
+  const bodyDataKeys = Object.keys(bodyData) as T[];
 
   for (let i = 0; i < bodyDataKeys.length; i++) {
     if (!keyData.includes(bodyDataKeys[i])) {
@@ -165,3 +157,18 @@ export const checkValidKey = (keyData: any, bodyData: any) => {
     key: null,
   };
 };
+
+export const checkArray = (data: any) => {
+  return Array.isArray(data);
+};
+
+export const new_order_body = [
+  'shipping_address',
+  'user_id',
+  'order_status',
+  'payment_status',
+  'delivery_status',
+  'total_price',
+  'total_items',
+  'order_items',
+];

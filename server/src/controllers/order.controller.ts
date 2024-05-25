@@ -1,12 +1,57 @@
 import { Response, NextFunction } from 'express';
 import { Product, Order, OrderItem } from '../models';
-import { Constant, ErrorHandler, Mail, AsyncHandler, Types, Enum } from '../utils';
+import { Constant, ErrorHandler, Mail, AsyncHandler, Types } from '../utils';
+import mongoose from 'mongoose';
 
 // Create New Order
 export const createOrder = AsyncHandler(async (req: Types.IAuthRequest, res: Response, next: NextFunction) => {
-  const isValidBodyKey = Constant.checkValidKey(Enum.enum_new_order, req.body);
+  const session = await mongoose.startSession();
+  session.startTransaction();
 
-  console.log(isValidBodyKey);
+  try {
+    const checkValidBody = Constant.checkValidKey(Constant.new_order_body, req.body);
+    const { order_items } = req.body;
+
+    console.log(checkValidBody.isValid);
+
+    if (!checkValidBody.isValid) {
+      throw new ErrorHandler(
+        `Invalid key in body detected. Valid keys are: ${Constant.new_order_body.join(', ')}`,
+        400
+      );
+    }
+
+    if (!Constant.checkArray(order_items)) {
+      throw new ErrorHandler('Please provide valid order items.', 400);
+    }
+
+    const order = await Order.create([req.body], { session });
+    console.log(order);
+
+    if (order) {
+      const order_id = order[0]._id;
+      const new_order_items = order_items.map((item: any) => ({ ...item, order_id }));
+      const orderItems = await OrderItem.insertMany(new_order_items, { session });
+      console.log(orderItems);
+
+      if (!orderItems) {
+        throw new ErrorHandler('Order items not created', 400);
+      }
+
+      await session.commitTransaction();
+      return res.status(200).json({
+        success: true,
+        message: 'Order Created Successfully',
+      });
+    } else {
+      throw new ErrorHandler('Order not created', 400);
+    }
+  } catch (error) {
+    await session.abortTransaction();
+    next(error);
+  } finally {
+    session.endSession();
+  }
 });
 
 // // Get Order Details

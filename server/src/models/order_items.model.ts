@@ -3,18 +3,23 @@ import { Interfaces } from '../utils';
 
 const schema = new Schema<Interfaces.IOrderItem>(
   {
+    order_id: {
+      type: Schema.Types.ObjectId,
+      ref: 'Order',
+      required: [true, 'Order ID is required.'],
+    },
     quantity: {
       type: Number,
-      required: true,
+      required: [true, 'Quantity is required.'],
     },
     total_price: {
       type: Number,
-      required: true,
+      required: [true, 'Total price is required.'],
     },
-    product: {
+    product_id: {
       type: Schema.Types.ObjectId,
       ref: 'Product',
-      required: true,
+      required: [true, 'Product ID is required.'],
     },
   },
   {
@@ -22,5 +27,5 @@ const schema = new Schema<Interfaces.IOrderItem>(
   }
 );
 
-const model = mongoose.model<Interfaces.IOrderItem>('OrderItem', schema, 'order_items');
-export default model;
+const OrderItem = mongoose.model<Interfaces.IOrderItem>('OrderItem', schema, 'order_items');
+export default OrderItem;

@@ -5,10 +5,10 @@ const schema = new Schema<Interfaces.IOrder>(
   {
     shipping_address: {
       type: Schema.Types.ObjectId,
-      ref: 'Address',
+      ref: 'UserAddress',
       required: true,
     },
-    user: {
+    user_id: {
       type: Schema.Types.ObjectId,
       ref: 'User',
       required: true,
@@ -30,13 +30,11 @@ const schema = new Schema<Interfaces.IOrder>(
     },
     total_price: {
       type: Number,
-      default: 0,
-      required: true,
+      required: [true, 'Total order price is required'],
     },
     total_items: {
       type: Number,
-      default: 0,
-      required: true,
+      required: [true, 'Total order items are required'],
     },
   },
   {
