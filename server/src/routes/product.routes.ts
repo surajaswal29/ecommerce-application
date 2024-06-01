@@ -5,7 +5,7 @@ import { UserAuth, UploadImage } from '../middleware';
 const router = express.Router();
 
 // Get All Product
-router.route('/products').get(ProductController.getAllProducts);
+router.route('/products/:page').get(ProductController.getAllProducts);
 
 // Get product details
 router.route('/product/:id').get(ProductController.getProductDetails);

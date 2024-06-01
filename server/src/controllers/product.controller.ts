@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { Product, ProductReview } from '../models';
 import { Constant, ErrorHandler, Mail, AsyncHandler, Types } from '../utils';
+import { IAllProductParams, IAllProductQuery } from '../interfaces';
 
 // create product -- Admin
 export const createProduct = AsyncHandler(async (req: Types.IAuthRequest, res: Response) => {
@@ -15,25 +16,39 @@ export const createProduct = AsyncHandler(async (req: Types.IAuthRequest, res: R
 });
 
 // Get All Products
-export const getAllProducts = AsyncHandler(async (req, res, next: NextFunction) => {
-  const resultPerPage = 8;
-  const productCount = await Product.countDocuments();
+export const getAllProducts = AsyncHandler(
+  async (req: Request<IAllProductParams, any, any, IAllProductQuery>, res: Response, next: NextFunction) => {
+    let resultPerPage: number = Constant.RESULT_PER_PAGE;
+    let pageNumber: number = 1;
 
-  const apiFeature = new ApiFeatures(Product.find(), req.query).search().filter().pagination(resultPerPage);
+    if (req.query.per_page && req.query.per_page !== 0) {
+      resultPerPage = Number(req.query.per_page);
+    } else if (req.query.per_page && req.query.per_page > 100) {
+      resultPerPage = 100;
+    }
 
-  const products = await apiFeature.query;
+    if (req.params.page && req.params.page > 0) {
+      pageNumber = Number(req.params.page);
+    }
 
-  if (!products) {
-    return next(new ErrorHandler('Product Not Found', 404));
+    const productCount = await Product.countDocuments();
+
+    const products = await Product.find()
+      .limit(resultPerPage)
+      .skip(resultPerPage * (pageNumber - 1));
+
+    if (!products || products.length === 0) {
+      return next(new ErrorHandler('Products Not Found', 404));
+    }
+
+    res.status(200).json({
+      success: true,
+      productCount,
+      resultPerPage,
+      data: products,
+    });
   }
-
-  res.status(200).json({
-    success: true,
-    products,
-    productCount,
-    resultPerPage,
-  });
-});
+);
 
 // Get Product Details
 export const getProductDetails = AsyncHandler(async (req: Request, res: Response, next: NextFunction) => {

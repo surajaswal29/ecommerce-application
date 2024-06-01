@@ -322,67 +322,8 @@ export const updateProfile = AsyncHandler(async (req: Types.IAuthRequest, res: R
 });
 
 // Update or add user address
-export const updateUserAddress = AsyncHandler(async (req: Types.IAuthRequest, res: Response, next: NextFunction) => {
-  const keyAllowed = ['label', 'city', 'state', 'country', 'zipCode', 'address', 'priority'];
-
-  const isValidKey = Constant.checkValidKey(keyAllowed, req.body);
-
-  if (!isValidKey.isValid) {
-    return next(new ErrorHandler(`Invalid key: ${isValidKey.key}. Valid keys are: ${keyAllowed.join(', ')}`, 400));
-  }
-
-  if (!req.query.addressId) {
-    const missingKey = keyAllowed.filter((key) => key !== 'label' && key !== 'priority');
-    if (!req.body.city || !req.body.state || !req.body.country || !req.body.zipCode || !req.body.address) {
-      return next(new ErrorHandler(`Missing key: Required keys are: ${missingKey.join(', ')}`, 400));
-    }
-  }
-
-  if (req.query.addressId) {
-    const updateData: { [key: string]: any } = {};
-
-    for (const key in req.body) {
-      if (keyAllowed.includes(key)) {
-        updateData[`address.$[elem].${key}`] = req.body[key];
-      }
-    }
-
-    console.log(updateData);
-
-    const updateExistAddress = await User.findOneAndUpdate(
-      { _id: req.user._id, 'address._id': req.query.addressId },
-      { $set: updateData },
-      {
-        arrayFilters: [{ 'elem._id': req.query.addressId }],
-        new: true,
-        useFindAndModify: false,
-        runValidators: true,
-      }
-    );
-
-    if (updateExistAddress) {
-      return res.status(200).json({
-        success: true,
-        message: 'Address updated successfully',
-        data: updateExistAddress,
-      });
-    }
-  }
-
-  const updateAddress = await User.findByIdAndUpdate(
-    req.user._id,
-    { $push: { address: req.body } },
-    { new: true, runValidators: true, useFindAndModify: false }
-  );
-
-  if (!updateAddress) {
-    return next(new ErrorHandler('Error', 400));
-  }
-  return res.status(200).json({
-    success: true,
-    message: 'New address added successfully',
-    data: updateAddress,
-  });
+export const addUserAddress = AsyncHandler(async (req: Types.IAuthRequest, res: Response, next: NextFunction) => {
+  console.log(req.user);
 });
 
 export const deleteUserAddress = AsyncHandler(async (req: Types.IAuthRequest, res: Response, next: NextFunction) => {

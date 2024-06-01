@@ -73,3 +73,11 @@ export interface IUserAddress extends Document {
   address: string;
   priority: string;
 }
+
+export interface IAllProductParams {
+  page?: number;
+}
+
+export interface IAllProductQuery {
+  per_page?: number;
+}

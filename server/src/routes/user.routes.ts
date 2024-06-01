@@ -26,9 +26,7 @@ router.route('/password/update').put(UserAuth.isAuthenticatedUser, UserControlle
 
 // User Profile Update Route
 router.route('/update_user_profile').post(UserAuth.isAuthenticatedUser, UserController.updateProfile as RequestHandler);
-router
-  .route('/add_user_address')
-  .post(UserAuth.isAuthenticatedUser, UserController.updateUserAddress as RequestHandler);
+router.route('/add_user_address').post(UserController.addUserAddress as RequestHandler);
 router
   .route('/delete_user_address/:addressId')
   .delete(UserAuth.isAuthenticatedUser, UserController.deleteUserAddress as RequestHandler);

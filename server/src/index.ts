@@ -69,7 +69,7 @@ cloudinary.v2.config({
 //   key_secret: process.env.RAZORPAY_KEY_SECRET,
 // });
 
-app.use('/api/v1', rootRoute);
+app.use('/api/v2', rootRoute);
 
 // serve static files for view
 // app.use(express.static(path.join(__dirname, './view')));

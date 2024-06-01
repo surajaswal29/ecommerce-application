@@ -172,3 +172,5 @@ export const new_order_body = [
   'total_items',
   'order_items',
 ];
+
+export const RESULT_PER_PAGE = 20;
