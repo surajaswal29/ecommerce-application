@@ -28,6 +28,7 @@
     "cors": "^2.8.5",
     "dayjs": "^1.11.11",
     "dotenv": "^16.0.3",
+    "ecommerce_application": "file:..",
     "express": "^4.18.2",
     "helmet": "^7.1.0",
     "jsonwebtoken": "^8.5.1",
