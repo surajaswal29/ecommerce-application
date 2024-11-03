@@ -8,28 +8,34 @@ green='\e[0;32m'
 yellow='\e[0;33m'
 clear='\e[0m'
 
+# Function to check the status of commands
+check_command() {
+    if ! "$@"; then
+        echo -e "${red}❌ Command failed: $*${clear}"
+        exit 1
+    fi
+}
+
+# Function to run Prettier and check for formatting issues
+check_prettier() {
+    if ! npx prettier --check .; then
+        echo -e "${red}❌ Prettier formatting issues found. Attempting to fix...${clear}"
+        check_command npx prettier --write .
+        echo -e "${green}✅ Prettier formatting fixed!${clear}"
+    fi
+}
+
 echo -e "${yellow}🔍 Running ESLint...${clear}"
-if ! npx eslint . --fix; then
-    echo -e "${red}❌ ESLint checks failed. Please fix the issues before committing.${clear}"
-    exit 1
-fi
+check_command npx eslint . --fix
 
 echo -e "${yellow}📝 Running Prettier...${clear}"
-if ! npx prettier --write .; then
-    echo -e "${red}❌ Prettier formatting issues found. Please format your code before committing.${clear}"
-    exit 1
-fi
+check_prettier
 
-echo -e "${yellow}🔍 Running TypeScript checks...${clear}"
-if ! npx tsc --noEmit -p ./client/tsconfig.json; then
-    echo -e "${red}❌ TypeScript checks failed in client. Please fix the errors before committing.${clear}"
-    exit 1
-fi
+echo -e "${yellow}🔍 Running TypeScript checks for client...${clear}"
+check_command npx tsc --noEmit -p ./client/tsconfig.json
 
-if ! npx tsc --noEmit -p ./server/tsconfig.json; then
-    echo -e "${red}❌ TypeScript checks failed in server. Please fix the errors before committing.${clear}"
-    exit 1
-fi
+echo -e "${yellow}🔍 Running TypeScript checks for server...${clear}"
+check_command npx tsc --noEmit -p ./server/tsconfig.json
 
 echo -e "${yellow}🚫 Checking for large files...${clear}"
 for file in $(git diff --cached --name-only); do
