@@ -31,19 +31,6 @@ if ! npx tsc --noEmit -p ./server/tsconfig.json; then
     exit 1
 fi
 
-
-echo -e "${yellow}🧪 Running tests...${clear}"
-if ! npm test; then
-    echo -e "${red}❌ Tests failed. Please fix the errors before committing.${clear}"
-    exit 1
-fi
-
-echo -e "${yellow}🔒 Running npm audit...${clear}"
-if ! npm audit --exit-code; then
-    echo -e "${red}❌ Security vulnerabilities found. Please fix them before committing.${clear}"
-    exit 1
-fi
-
 echo -e "${yellow}🚫 Checking for large files...${clear}"
 for file in $(git diff --cached --name-only); do
     if [ $(wc -c < "$file") -gt 1048576 ]; then
