@@ -14,9 +14,7 @@ const createTransporter = (): Transporter => {
   });
 };
 
-export const email_verification_mail = async (
-  data: Types.IEmailData
-): Promise<boolean> => {
+export const email_verification_mail = async (data: Types.IEmailData): Promise<boolean> => {
   try {
     const transporter = createTransporter(); // Create transporter instance
     await transporter.verify(); // Verify transporter
@@ -42,9 +40,7 @@ export const email_verification_mail = async (
   }
 };
 
-export const password_reset_mail = async (
-  data: Types.IEmailData
-): Promise<boolean> => {
+export const password_reset_mail = async (data: Types.IEmailData): Promise<boolean> => {
   try {
     const transporter = createTransporter(); // Create transporter instance
     await transporter.verify(); // Verify transporter

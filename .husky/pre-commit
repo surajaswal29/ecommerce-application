@@ -1,18 +1,55 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+#!/bin/bash
 
-# Color variables
-red='\033[0;31m'
-green='\033[0;32m'
-cyan='\033[0;36m'
-# Clear the color after that
-clear='\033[0m'
+set -e  # Exit immediately if a command exits with a non-zero status.
 
-echo "${cyan}🔍 Running lint-staged on staged files...${clear}"
-# Run lint-staged for staged files
-if npx lint-staged; then
-    echo "${green}✅ lint-staged checks passed!${clear}"
-else
-    echo "${red}❌ lint-staged checks failed. Please fix issues before committing.${clear}"
+# Color variables for output messages
+red='\e[0;31m'
+green='\e[0;32m'
+yellow='\e[0;33m'
+clear='\e[0m'
+
+echo -e "${yellow}🔍 Running ESLint...${clear}"
+if ! npx eslint . --fix; then
+    echo -e "${red}❌ ESLint checks failed. Please fix the issues before committing.${clear}"
     exit 1
 fi
+
+echo -e "${yellow}📝 Running Prettier...${clear}"
+if ! npx prettier --write .; then
+    echo -e "${red}❌ Prettier formatting issues found. Please format your code before committing.${clear}"
+    exit 1
+fi
+
+echo -e "${yellow}🔍 Running TypeScript checks...${clear}"
+if ! npx tsc --noEmit -p ./client/tsconfig.json; then
+    echo -e "${red}❌ TypeScript checks failed in client. Please fix the errors before committing.${clear}"
+    exit 1
+fi
+
+if ! npx tsc --noEmit -p ./server/tsconfig.json; then
+    echo -e "${red}❌ TypeScript checks failed in server. Please fix the errors before committing.${clear}"
+    exit 1
+fi
+
+
+echo -e "${yellow}🧪 Running tests...${clear}"
+if ! npm test; then
+    echo -e "${red}❌ Tests failed. Please fix the errors before committing.${clear}"
+    exit 1
+fi
+
+echo -e "${yellow}🔒 Running npm audit...${clear}"
+if ! npm audit --exit-code; then
+    echo -e "${red}❌ Security vulnerabilities found. Please fix them before committing.${clear}"
+    exit 1
+fi
+
+echo -e "${yellow}🚫 Checking for large files...${clear}"
+for file in $(git diff --cached --name-only); do
+    if [ $(wc -c < "$file") -gt 1048576 ]; then
+        echo -e "${red}❌ File $file is larger than 1MB. Please remove it from your commit.${clear}"
+        exit 1
+    fi
+done
+
+echo -e "${green}✅ All checks passed! Ready to commit.${clear}"

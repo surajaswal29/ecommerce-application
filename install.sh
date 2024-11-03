@@ -22,7 +22,7 @@ install_deps "." "root"
 # Install server dependencies
 install_deps "server" "server"
 
-# Install view dependencies
-install_deps "view" "view"
+# Install client dependencies
+install_deps "client" "client"
 
 echo "✅ Installation complete!"

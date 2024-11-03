@@ -1,7 +1,7 @@
 # Node modules
 /node_modules
 /server/node_modules
-/view/node_modules
+/client/node_modules
 
 # Logs
 logs
@@ -14,7 +14,7 @@ yarn-error.log*
 /server/.env
 
 # Vite cache
-/view/vite.cache
+/client/vite.cache
 
 # VSCode directory
 .vscode/
@@ -36,3 +36,4 @@ coverage/
 # lock files
 /yarn.lock
 /server/yarn.lock
+/client/yarn.lock

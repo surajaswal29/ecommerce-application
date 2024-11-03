@@ -12,11 +12,7 @@ const storage = multer.memoryStorage();
 // Configure multer upload settings
 const upload = multer({
   storage: storage,
-  fileFilter: (
-    req: Request,
-    file: UploadedFile,
-    cb: multer.FileFilterCallback
-  ) => {
+  fileFilter: (req: Request, file: UploadedFile, cb: multer.FileFilterCallback) => {
     // Check if the file is an image
     if (file.mimetype.startsWith('image')) {
       // Allow the upload
@@ -36,11 +32,7 @@ const upload = multer({
 const singleUpload = upload.single('file');
 
 // Middleware function to upload a single file to Cloudinary
-export const uploadSingleFile = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-): void => {
+export const uploadSingleFile = (req: Request, res: Response, next: NextFunction): void => {
   // Handle single file upload
   singleUpload(req, res, (err: any) => {
     // Handle multer errors
@@ -74,9 +66,7 @@ export const uploadSingleFile = (
 };
 
 // Function to upload a single file to Cloudinary
-export const uploadToCloudinary = async (
-  req: Request
-): Promise<{ success: boolean; msg: string; url?: string }> => {
+export const uploadToCloudinary = async (req: Request): Promise<{ success: boolean; msg: string; url?: string }> => {
   try {
     const file = req.file as UploadedFile;
     if (!file) {
@@ -111,10 +101,14 @@ export const uploadToCloudinary = async (
   } catch (error) {
     // Handle errors during upload
     console.error(error);
-    console.error('Error in uploading image to cloudinary');
+    console.error('Error in uploading image to Cloudinary');
+
+    // Check if the error is an instance of Error and access its message
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+
     return {
       success: false,
-      msg: error.message,
+      msg: errorMessage,
     };
   }
 };

@@ -53,8 +53,4 @@ export interface IUserDocument extends Document {
   comparePassword(enteredPassword: string): Promise<boolean>;
 }
 
-export type AsyncCallback = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => Promise<any>;
+export type AsyncCallback = (req: Request, res: Response, next: NextFunction) => Promise<any>;

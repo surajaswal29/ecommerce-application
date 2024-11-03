@@ -1771,7 +1771,7 @@ ecdsa-sig-formatter@1.0.11:
 "ecommerce_application@file:..":
   version "1.0.0"
   dependencies:
-    ecommerce_application "file:C:/Users/user/AppData/Local/Yarn/Cache/v6/npm-ecommerce-application-1.0.0-075f93c9-971c-4dbf-a082-cf2f669709bc-1730644175030/node_modules/ecommerce_application"
+    ecommerce_application "file:C:/Users/user/AppData/Local/Yarn/Cache/v6/npm-ecommerce-application-1.0.0-2ef8e09e-5238-4aeb-8e9b-9237201c69f0-1730661644094/node_modules/ecommerce_application"
 
 ee-first@1.1.1:
   version "1.1.1"
