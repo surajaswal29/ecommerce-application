@@ -1,6 +1,6 @@
 'use client';
-import { CategoryNav } from '@/components';
 import React from 'react';
+import { CategoryNav } from '@/components';
 
 const HomeContainer = () => {
   return (

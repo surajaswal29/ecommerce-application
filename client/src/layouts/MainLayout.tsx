@@ -1,6 +1,6 @@
 'use client';
-import { Footer, Header } from '@/components';
 import React from 'react';
+import { Footer, Header } from '@/components';
 
 type Props = {
   children: React.ReactNode;

@@ -1,5 +1,5 @@
-import React, { forwardRef } from 'react';
 import { ButtonProps, Button as MantineButton } from '@mantine/core';
+import React, { forwardRef } from 'react';
 
 interface ICustomButtonProps extends ButtonProps {}
 

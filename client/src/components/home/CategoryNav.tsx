@@ -1,6 +1,6 @@
-import { categoriesData } from '@/utils/utils';
-import { Button } from '@/components';
 import React from 'react';
+import { Button } from '@/components';
+import { categoriesData } from '@/utils/utils';
 
 type Props = {};
 

@@ -1,9 +1,9 @@
-import { categoriesData } from '@/utils/utils';
 import { ActionIcon, Button, TextInput, Popover, Indicator } from '@mantine/core';
 import { useSetState } from '@mantine/hooks';
 import { CaretDown, Funnel, MagnifyingGlass, ShoppingCart, User } from '@phosphor-icons/react';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React from 'react';
+import { categoriesData } from '@/utils/utils';
 
 const logo =
   process.env.APP_LOGO_1 ||
