@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/index.js",
-    "prebuild": "npm ci --workspaces",
+    "prebuild": "npm ci --workspaces --legacy-peer-deps",
     "build": "npm run build --workspace=view",
     "build:all": "npm run build --workspace=view && echo 'Server ready'",
     "dev:server": "npm run dev --workspace=server",

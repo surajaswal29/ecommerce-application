@@ -3,7 +3,7 @@
 /frontend/node_modules
 /backend/config/config.env
 .vscode
-
+/.history
 # Environment variables
 .env
 server/.env
