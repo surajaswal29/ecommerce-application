@@ -1,0 +1,24 @@
+# Database
+MONGODB_URI=mongodb://localhost:27017/ecommerce
+
+# JWT
+JWT_SECRET=your_jwt_secret_key
+JWT_EXPIRE=7d
+
+# Cloudinary
+CLOUDINARY_NAME=your_cloudinary_name
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+
+# Instamojo Payment Gateway
+INSTAMOJO_API_KEY=your_instamojo_api_key
+INSTAMOJO_AUTH_TOKEN=your_instamojo_auth_token
+INSTAMOJO_BASE_URL=https://test.instamojo.com
+
+# Server URLs (for webhooks and redirects)
+BACKEND_URL=http://localhost:4000
+FRONTEND_URL=http://localhost:3000
+
+# Server
+PORT=4000
+NODE_ENV=development

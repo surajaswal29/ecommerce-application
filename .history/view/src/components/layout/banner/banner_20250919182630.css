@@ -1,0 +1,239 @@
+.main-banner {
+  width: 100%;
+  height: 50vh;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.main-banner img {
+  height: 100%;
+  transition: transform 0.3s ease;
+  border-radius: 12px;
+}
+
+.main-banner img:hover {
+  transform: scale(1.02);
+}
+
+.main-contain {
+  object-fit: cover;
+  object-position: center;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Swiper navigation and pagination styles */
+.swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background: #fff;
+}
+
+.mens-promotional-banner {
+  width: 100%;
+  height: 60vh;
+  border: 1px solid #ebebeb;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.mens-promotional-banner:hover {
+  border-color: #007bff;
+  box-shadow: 0 8px 32px rgba(0, 123, 255, 0.2);
+  transform: translateY(-4px);
+}
+
+.mens-promotional-banner a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.mens-promotional-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover !important;
+  object-position: center;
+  transition: transform 0.4s ease;
+  border-radius: 12px;
+}
+
+.mens-promotional-banner:hover img {
+  transform: scale(1.08);
+}
+
+/* Side promotional banner specific styles */
+.col-md-4 .mens-promotional-banner {
+  height: 60vh;
+  margin-right: 15px;
+}
+
+.col-md-4 .mens-promotional-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(0, 123, 255, 0.1) 0%, rgba(0, 123, 255, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.col-md-4 .mens-promotional-banner:hover::before {
+  opacity: 1;
+}
+
+.main-contain {
+  width: 100%;
+  height: 100%;
+  object-fit: cover !important;
+  object-position: center;
+  border-radius: 12px;
+}
+
+.main-contain:hover {
+  transform: scale(1.02);
+}
+
+/* Banner section container improvements */
+.container-fluid .row:first-child {
+  margin-bottom: 2rem;
+  align-items: stretch;
+}
+
+.container-fluid .row:first-child .col-md-4,
+.container-fluid .row:first-child .col-md-8 {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Add some spacing between banner sections */
+.container-fluid .row:last-child {
+  margin-top: 1rem;
+}
+
+/* Loading state for images */
+.mens-promotional-banner img[src="/placeholder-image.svg"] {
+  background-color: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .main-banner {
+    height: 40vh;
+  }
+
+  .mens-promotional-banner {
+    height: 200px;
+    margin-bottom: 1rem;
+  }
+
+  .col-md-4 .mens-promotional-banner {
+    height: 200px;
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .main-banner {
+    height: 35vh;
+  }
+
+  .mens-promotional-banner {
+    height: 180px;
+  }
+
+  .col-md-4 .mens-promotional-banner {
+    height: 180px;
+  }
+
+  .swiper-slide img {
+    object-position: center top;
+  }
+}
+
+/* Tablet styles */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .main-banner {
+    height: 50vh;
+  }
+
+  .mens-promotional-banner {
+    height: 50vh;
+  }
+
+  .col-md-4 .mens-promotional-banner {
+    height: 50vh;
+  }
+}
+
+/* Large desktop styles */
+@media (min-width: 1200px) {
+  .main-banner {
+    height: 65vh;
+  }
+
+  .mens-promotional-banner {
+    height: 65vh;
+  }
+
+  .col-md-4 .mens-promotional-banner {
+    height: 65vh;
+  }
+}

@@ -1,0 +1,269 @@
+[
+  {
+    "name": "Classic Cotton T-Shirt",
+    "description": "Premium quality cotton t-shirt with comfortable fit and modern design. Perfect for casual wear and everyday activities.",
+    "price": 1299,
+    "ratings": 4.5,
+    "images": [
+      {
+        "public_id": "tshirt_001",
+        "url": "https://via.placeholder.com/400x400/FF6B6B/FFFFFF?text=T-Shirt"
+      },
+      {
+        "public_id": "tshirt_002",
+        "url": "https://via.placeholder.com/400x400/4ECDC4/FFFFFF?text=T-Shirt+Back"
+      }
+    ],
+    "category": "topwear",
+    "stock": 50,
+    "numOfReviews": 23,
+    "reviews": [
+      {
+        "user": "60f7b3b3b3b3b3b3b3b3b3b3",
+        "name": "John Doe",
+        "rating": 5,
+        "comment": "Great quality and perfect fit!"
+      },
+      {
+        "user": "60f7b3b3b3b3b3b3b3b3b3b4",
+        "name": "Jane Smith",
+        "rating": 4,
+        "comment": "Good material, slightly oversized but comfortable."
+      }
+    ],
+    "user": "60f7b3b3b3b3b3b3b3b3b3b1",
+    "createdAt": "2024-01-15T10:30:00.000Z"
+  },
+  {
+    "name": "Wireless Bluetooth Headphones",
+    "description": "High-quality wireless headphones with noise cancellation, 30-hour battery life, and premium sound quality.",
+    "price": 8999,
+    "ratings": 4.8,
+    "images": [
+      {
+        "public_id": "headphones_001",
+        "url": "https://via.placeholder.com/400x400/45B7D1/FFFFFF?text=Headphones"
+      }
+    ],
+    "category": "gadgets",
+    "stock": 25,
+    "numOfReviews": 156,
+    "reviews": [
+      {
+        "user": "60f7b3b3b3b3b3b3b3b3b3b5",
+        "name": "Mike Johnson",
+        "rating": 5,
+        "comment": "Excellent sound quality and battery life!"
+      }
+    ],
+    "user": "60f7b3b3b3b3b3b3b3b3b3b2",
+    "createdAt": "2024-01-20T14:45:00.000Z"
+  },
+  {
+    "name": "Leather Crossbody Bag",
+    "description": "Genuine leather crossbody bag with multiple compartments, perfect for daily use and travel.",
+    "price": 3499,
+    "ratings": 4.2,
+    "images": [
+      {
+        "public_id": "bag_001",
+        "url": "https://via.placeholder.com/400x400/96CEB4/FFFFFF?text=Crossbody+Bag"
+      },
+      {
+        "public_id": "bag_002",
+        "url": "https://via.placeholder.com/400x400/FFEAA7/FFFFFF?text=Bag+Interior"
+      }
+    ],
+    "category": "accessories",
+    "stock": 30,
+    "numOfReviews": 42,
+    "reviews": [],
+    "user": "60f7b3b3b3b3b3b3b3b3b3b3",
+    "createdAt": "2024-01-25T09:15:00.000Z"
+  },
+  {
+    "name": "Running Shoes",
+    "description": "Lightweight running shoes with advanced cushioning technology and breathable mesh upper for maximum comfort.",
+    "price": 5999,
+    "ratings": 4.6,
+    "images": [
+      {
+        "public_id": "shoes_001",
+        "url": "https://via.placeholder.com/400x400/74B9FF/FFFFFF?text=Running+Shoes"
+      }
+    ],
+    "category": "footwear",
+    "stock": 40,
+    "numOfReviews": 89,
+    "reviews": [
+      {
+        "user": "60f7b3b3b3b3b3b3b3b3b3b6",
+        "name": "Sarah Wilson",
+        "rating": 5,
+        "comment": "Perfect for my daily runs, very comfortable!"
+      },
+      {
+        "user": "60f7b3b3b3b3b3b3b3b3b3b7",
+        "name": "David Brown",
+        "rating": 4,
+        "comment": "Good shoes, but runs a bit small."
+      }
+    ],
+    "user": "60f7b3b3b3b3b3b3b3b3b3b4",
+    "createdAt": "2024-02-01T16:20:00.000Z"
+  },
+  {
+    "name": "Smart Watch",
+    "description": "Feature-rich smartwatch with health monitoring, GPS tracking, and smartphone connectivity.",
+    "price": 12999,
+    "ratings": 4.7,
+    "images": [
+      {
+        "public_id": "watch_001",
+        "url": "https://via.placeholder.com/400x400/6C5CE7/FFFFFF?text=Smart+Watch"
+      }
+    ],
+    "category": "watches",
+    "stock": 15,
+    "numOfReviews": 203,
+    "reviews": [
+      {
+        "user": "60f7b3b3b3b3b3b3b3b3b3b8",
+        "name": "Lisa Garcia",
+        "rating": 5,
+        "comment": "Amazing features and great battery life!"
+      }
+    ],
+    "user": "60f7b3b3b3b3b3b3b3b3b3b5",
+    "createdAt": "2024-02-05T11:30:00.000Z"
+  },
+  {
+    "name": "Denim Jeans",
+    "description": "Classic blue denim jeans with stretch fabric for comfort and modern fit. Perfect for casual and semi-formal occasions.",
+    "price": 2499,
+    "ratings": 4.3,
+    "images": [
+      {
+        "public_id": "jeans_001",
+        "url": "https://via.placeholder.com/400x400/A29BFE/FFFFFF?text=Denim+Jeans"
+      }
+    ],
+    "category": "bottomwear",
+    "stock": 60,
+    "numOfReviews": 67,
+    "reviews": [],
+    "user": "60f7b3b3b3b3b3b3b3b3b3b6",
+    "createdAt": "2024-02-10T13:45:00.000Z"
+  },
+  {
+    "name": "Sports Backpack",
+    "description": "Durable sports backpack with laptop compartment, water bottle holder, and multiple storage pockets.",
+    "price": 1999,
+    "ratings": 4.4,
+    "images": [
+      {
+        "public_id": "backpack_001",
+        "url": "https://via.placeholder.com/400x400/FD79A8/FFFFFF?text=Sports+Backpack"
+      }
+    ],
+    "category": "backpacks",
+    "stock": 35,
+    "numOfReviews": 34,
+    "reviews": [
+      {
+        "user": "60f7b3b3b3b3b3b3b3b3b3b9",
+        "name": "Tom Anderson",
+        "rating": 4,
+        "comment": "Good quality backpack, lots of space."
+      }
+    ],
+    "user": "60f7b3b3b3b3b3b3b3b3b3b7",
+    "createdAt": "2024-02-15T08:00:00.000Z"
+  },
+  {
+    "name": "Designer Sunglasses",
+    "description": "Premium UV protection sunglasses with polarized lenses and stylish frame design.",
+    "price": 1799,
+    "ratings": 4.1,
+    "images": [
+      {
+        "public_id": "sunglasses_001",
+        "url": "https://via.placeholder.com/400x400/00B894/FFFFFF?text=Sunglasses"
+      }
+    ],
+    "category": "sunglasses",
+    "stock": 20,
+    "numOfReviews": 28,
+    "reviews": [],
+    "user": "60f7b3b3b3b3b3b3b3b3b3b8",
+    "createdAt": "2024-02-20T15:30:00.000Z"
+  },
+  {
+    "name": "Cotton Innerwear Set",
+    "description": "Comfortable cotton innerwear set with breathable fabric and comfortable fit for all-day wear.",
+    "price": 899,
+    "ratings": 4.0,
+    "images": [
+      {
+        "public_id": "innerwear_001",
+        "url": "https://via.placeholder.com/400x400/FDCB6E/FFFFFF?text=Innerwear+Set"
+      }
+    ],
+    "category": "innerwear",
+    "stock": 100,
+    "numOfReviews": 45,
+    "reviews": [],
+    "user": "60f7b3b3b3b3b3b3b3b3b3b9",
+    "createdAt": "2024-02-25T12:15:00.000Z"
+  },
+  {
+    "name": "Festive Kurta",
+    "description": "Elegant festive kurta with intricate embroidery and comfortable cotton fabric, perfect for special occasions.",
+    "price": 4599,
+    "ratings": 4.5,
+    "images": [
+      {
+        "public_id": "kurta_001",
+        "url": "https://via.placeholder.com/400x400/E17055/FFFFFF?text=Festive+Kurta"
+      }
+    ],
+    "category": "festive_wear",
+    "stock": 25,
+    "numOfReviews": 18,
+    "reviews": [
+      {
+        "user": "60f7b3b3b3b3b3b3b3b3b3b10",
+        "name": "Priya Sharma",
+        "rating": 5,
+        "comment": "Beautiful design and excellent quality!"
+      }
+    ],
+    "user": "60f7b3b3b3b3b3b3b3b3b3b10",
+    "createdAt": "2024-03-01T10:00:00.000Z"
+  },
+  {
+    "name": "Gym Sports Wear Set",
+    "description": "Complete gym wear set including t-shirt and shorts with moisture-wicking fabric for intense workouts.",
+    "price": 3299,
+    "ratings": 4.6,
+    "images": [
+      {
+        "public_id": "gymwear_001",
+        "url": "https://via.placeholder.com/400x400/00CEC9/FFFFFF?text=Gym+Wear+Set"
+      }
+    ],
+    "category": "sports_wear",
+    "stock": 45,
+    "numOfReviews": 72,
+    "reviews": [
+      {
+        "user": "60f7b3b3b3b3b3b3b3b3b3b11",
+        "name": "Alex Martinez",
+        "rating": 5,
+        "comment": "Perfect for workouts, very comfortable and breathable."
+      }
+    ],
+    "user": "60f7b3b3b3b3b3b3b3b3b3b11",
+    "createdAt": "2024-03-05T14:20:00.000Z"
+  }
+]

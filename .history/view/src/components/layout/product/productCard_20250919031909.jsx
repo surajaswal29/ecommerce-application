@@ -1,0 +1,57 @@
+import React from "react";
+import ReactStar from "react-rating-stars-component";
+
+// product css file
+import "./product.css";
+import { Link } from "react-router-dom";
+
+const ProductCard = ({ product }) => {
+  const options = {
+    edit: false,
+    color: "rgba(20,20,20,0.1)",
+    activeColor: "tomato",
+    size: window.innerwidth < 600 ? 20 : 25,
+    value: product.ratings,
+    isHalf: true,
+  };
+
+  return (
+    <div className="card-box">
+      <Link 
+        to={`/product/${product._id}`} 
+        className="card-inner-box"
+        aria-label={`View details for ${product.name}`}
+      >
+              <div className="card-image pr-center">
+                <img
+                  src={
+                    product.images && product.images[0]
+                      ? product.images[0].url
+                      : "/placeholder-image.jpg"
+                  }
+                  alt={product.name || "Product"}
+                  className="img-fluid"
+                  onError={(e) => {
+                    e.target.src = "/placeholder-image.jpg";
+                  }}
+                />
+              </div>
+        <div className="card-description">
+          <h2>{product.name}</h2>
+          <div className="ratings pr-center-even">
+            <ReactStar {...options} />{" "}
+            <span>({product.numOfReviews}) reviews</span>
+          </div>
+          <span>
+            {product.price.toLocaleString("en-IN", {
+              style: "currency",
+              currency: "INR",
+            })}
+          </span>
+        </div>
+      </Link>
+    </div>
+  );
+};
+
+export default ProductCard;
