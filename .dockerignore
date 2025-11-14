@@ -1,0 +1,75 @@
+# Dependencies
+node_modules/
+**/node_modules/
+server/node_modules/
+view/node_modules/
+
+# Build outputs (will be built in Docker)
+server/view/
+view/dist/
+view/.vite/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+server/.env
+view/.env
+**/.env
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.history/
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Testing
+coverage/
+.nyc_output/
+.vitest/
+*.test.js
+*.spec.js
+
+# Documentation
+docs/
+README.md
+*.md
+
+# Misc
+.video/
+video/
+*.pid
+*.seed
+*.pid.lock
+.cache/
+.temp/
+
+# Docker
+Dockerfile*
+.dockerignore
+docker-compose*.yml
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+cloudbuild.yaml
+
